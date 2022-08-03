@@ -9,3 +9,6 @@ const agoraCall =
 
 const agoraTexting =
   'https://github.com/AgoraIO-Community/react-native-agora/blob/master/example/src/examples/advanced/StreamMessage/StreamMessage.tsx';
+
+const liveVideoClassComp =
+  'https://medium.com/geekculture/building-a-live-audio-streaming-react-native-app-with-agora-acff6e7fd68f';

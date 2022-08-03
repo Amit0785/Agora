@@ -8,6 +8,8 @@ import {
   Text,
   TextInput,
   View,
+  TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 
 import RtcEngine, {
@@ -21,6 +23,7 @@ import RtcEngine, {
 } from 'react-native-agora';
 
 const config = require('./Agora.json');
+const {width, height} = Dimensions.get('window');
 
 // interface State {
 //   channelId: string;
@@ -36,6 +39,7 @@ export default class StreamMessage2 extends Component {
       channelId: config.channelId,
       remoteUid: [],
       isJoined: false,
+      question: '',
     };
     this.engine = React.createRef();
   }
@@ -101,6 +105,8 @@ export default class StreamMessage2 extends Component {
     });
     this.engine.addListener('StreamMessage', (uid, streamId, data) => {
       console.info('StreamMessage', uid, streamId, data);
+      //this.state.question=data
+      this.setState({question: data});
       Alert.alert(`Receive from uid:${uid}`, `StreamId ${streamId}:${data}`, [
         {
           text: 'Ok',
@@ -160,6 +166,31 @@ export default class StreamMessage2 extends Component {
         </View>
         {isJoined && this.renderVideo()}
         {isJoined && this.renderToolBar()}
+        <TouchableOpacity
+          style={{
+            //height: 80,
+            width: width * 0.9,
+            alignSelf: 'center',
+            backgroundColor: '#FFFFFF',
+            borderRadius: 10,
+            padding: 15,
+            marginTop: height * 0.03,
+            position: 'absolute',
+            top: height * 0.13,
+          }}>
+          <Text
+            style={{
+              fontSize: 17,
+              fontWeight: '400',
+              color: '#151143',
+              marginBottom: 10,
+            }}>
+            Questions
+          </Text>
+          <Text style={{fontSize: 17, fontWeight: '400', color: '#151143'}}>
+            {this.state.question}
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
