@@ -1,97 +1,105 @@
+import React, {useRef, useEffect} from 'react';
 import {
+  Alert,
+  Button,
+  PermissionsAndroid,
+  Platform,
   StyleSheet,
   Text,
+  TextInput,
   View,
-  PermissionsAndroid,
-  ActivityIndicator,
-  Dimensions,
-  Share,
   TouchableOpacity,
-  Image,
+  Dimensions,
 } from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
 
 import RtcEngine, {
   ChannelProfile,
   ClientRole,
+  DataStreamConfig,
+  RtcEngineContext,
   RtcLocalView,
   RtcRemoteView,
+  VideoRenderMode,
   VideoRemoteState,
 } from 'react-native-agora';
+
+const config = require('./Agora.json');
 const {width, height} = Dimensions.get('window');
 
-const Live = props => {
-  const AgoraEngine = React.createRef();
+const LiveFunctional = () => {
+  const engine = React.createRef();
+  //const AgoraEngine = useRef();
   const [joined, setJoined] = useState(false);
-  const [channelId, setChannelId] = useState(props.route.params.channel);
   const [broadcasterVideoState, setBroadcasterVideoState] = useState(
     VideoRemoteState.Decoding,
   );
   const isBroadcaster = props.route.params.type === 'create';
 
-  const onShare = async () => {
-    try {
-      await Share.share({message: channelId});
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const onSwitchCamera = () => AgoraEngine.current.switchCamera();
-
-  const videoStateMessage = state => {
-    switch (state) {
-      case VideoRemoteState.Stopped:
-        return 'Video turned off by Host';
-
-      case VideoRemoteState.Frozen:
-        return 'Connection Issue, Please Wait';
-
-      case VideoRemoteState.Failed:
-        return 'Network Error';
-    }
-  };
-  const cnannelId = props.route.params.channel;
   const init = async () => {
-    setChannelId(props.route.params.channel);
-    AgoraEngine.current = await RtcEngine.createWithContext(
+    if (Platform.OS === 'android') {
+      await PermissionsAndroid.requestMultiple([
+        'android.permission.RECORD_AUDIO',
+        'android.permission.CAMERA',
+      ]);
+    }
+
+    engine = await RtcEngine.createWithContext(
       new RtcEngineContext(config.appId),
     );
-    AgoraEngine.current.enableVideo();
-    AgoraEngine.current.setChannelProfile(ChannelProfile.LiveBroadcasting);
-    if (isBroadcaster)
-      AgoraEngine.current.setClientRole(ClientRole.Broadcaster);
-    AgoraEngine.current.addListener('RemoteVideoStateChanged', (uid, state) => {
-      if (uid === 1) setBroadcasterVideoState(state);
-    });
-    AgoraEngine.current.addListener(
-      'JoinChannelSuccess',
-      (channel, uid, elapsed) => {
-        console.log('JoinChannelSuccess', channel, uid, elapsed);
-        setJoined(true);
-      },
-    );
-    AgoraEngine.current.addListener('Warning', warningCode => {
+    addListeners();
+
+    // enable video module and set up video encoding configs
+    await engine.enableVideo();
+
+    // make myself a broadcaster
+    await engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
+    await engine.setClientRole(ClientRole.Broadcaster);
+
+    // Set audio route to speaker
+    await engine.setDefaultAudioRoutetoSpeakerphone(true);
+  };
+
+  const joinChannel = async () => {
+    // start joining channel
+    // 1. Users can only see each other after they join the
+    // same channel successfully using the same app id.
+    // 2. If app certificate is turned on at dashboard, token is needed
+    // when joining channel. The channel name and uid used to calculate
+    // the token has to match the ones used for channel join
+    await engine.joinChannel(null, config.channelId, null, config.uid);
+  };
+
+  const addListeners = () => {
+    engine.addListener('Warning', warningCode => {
       console.info('Warning', warningCode);
     });
-    AgoraEngine.current.addListener('Error', errorCode => {
+    engine.addListener('Error', errorCode => {
       console.info('Error', errorCode);
     });
-
-    AgoraEngine.current.addListener('LeaveChannel', stats => {
+    engine.addListener('JoinChannelSuccess', (channel, uid, elapsed) => {
+      console.info('JoinChannelSuccess', channel, uid, elapsed);
+      // RtcLocalView.SurfaceView must render after engine init and channel join
+      this.setState({isJoined: true});
+    });
+    engine.addListener('LeaveChannel', stats => {
       console.info('LeaveChannel', stats);
       // RtcLocalView.SurfaceView must render after engine init and channel join
-      // this.setState({isJoined: false, remoteUid: []});
+      this.setState({isJoined: false, remoteUid: []});
     });
-    AgoraEngine.current.addListener('UserJoined', (uid, elapsed) => {
+    engine.addListener('UserJoined', (uid, elapsed) => {
       console.info('UserJoined', uid, elapsed);
+      //   this.setState({remoteUid: [...this.state.remoteUid, uid]});
     });
-    AgoraEngine.current.addListener('UserOffline', (uid, reason) => {
+    engine.addListener('UserOffline', (uid, reason) => {
       console.info('UserOffline', uid, reason);
+      //   this.setState({
+      //     remoteUid: this.state.remoteUid.filter(value => value !== uid),
+      //   });
     });
-    AgoraEngine.current.addListener('StreamMessage', (uid, streamId, data) => {
+    engine.addListener('StreamMessage', (uid, streamId, data) => {
       console.info('StreamMessage', uid, streamId, data);
-
+      //this.state.question=data
+      //this.setState({question: data});
       Alert.alert(`Receive from uid:${uid}`, `StreamId ${streamId}:${data}`, [
         {
           text: 'Ok',
@@ -99,47 +107,28 @@ const Live = props => {
         },
       ]);
     });
-  };
-  useEffect(() => {
-    // Function Body
-    const uid = isBroadcaster ? 1 : 0;
-    requestCameraAndAudioPermission();
-    init().then(() =>
-      AgoraEngine.current.joinChannel(null, channelId, null, uid),
+    engine.addListener(
+      'StreamMessageError',
+      (uid, streamId, error, missed, cached) => {
+        console.info(
+          'StreamMessageError',
+          uid,
+          streamId,
+          error,
+          missed,
+          cached,
+        );
+      },
     );
-
-    return () => {
-      // Cleanup Function
-      AgoraEngine.current.destroy();
-    };
-  }, [channelId, setChannelId]);
-
-  async function requestCameraAndAudioPermission() {
-    if (Platform.OS === 'android') {
-      try {
-        const granted = await PermissionsAndroid.requestMultiple([
-          PermissionsAndroid.PERMISSIONS.CAMERA,
-          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-        ]);
-        if (
-          granted['android.permission.RECORD_AUDIO'] ===
-            PermissionsAndroid.RESULTS.GRANTED &&
-          granted['android.permission.CAMERA'] ===
-            PermissionsAndroid.RESULTS.GRANTED
-        ) {
-          console.log('You can use the cameras & mic');
-        } else {
-          console.log('Permission denied');
-        }
-      } catch (err) {
-        console.warn(err);
-      }
-    }
-  }
-
-  const onClose = async () => {
-    props.navigation.goBack();
   };
+
+  useEffect(() => {
+    init();
+
+    // return () => {
+
+    // }
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -157,7 +146,7 @@ const Live = props => {
           {isBroadcaster ? (
             <RtcLocalView.SurfaceView
               style={styles.fullscreen}
-              channelId={channelId}
+              channelId={props.route.params.channel}
             />
           ) : (
             <>
@@ -165,7 +154,7 @@ const Live = props => {
                 <RtcRemoteView.SurfaceView
                   uid={1}
                   style={styles.fullscreen}
-                  channelId={channelId}
+                  channelId={props.route.params.channel}
                 />
               ) : (
                 <View style={styles.broadcasterVideoStateMessage}>
@@ -280,7 +269,7 @@ const Live = props => {
   );
 };
 
-export default Live;
+export default LiveFunctional;
 
 const styles = StyleSheet.create({
   loadingText: {

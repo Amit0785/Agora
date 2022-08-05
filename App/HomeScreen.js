@@ -49,6 +49,10 @@ const HomeScreen = props => {
   const Recording = () => {
     props.navigation.navigate('Recording');
   };
+
+  const ReelVideo = () => {
+    props.navigation.navigate('Reel');
+  };
   return (
     <SafeAreaView style={{flex: 1, alignItems: 'center'}}>
       <ScrollView>
@@ -182,6 +186,20 @@ const HomeScreen = props => {
               backgroundColor: 'peru',
             }}>
             <Text>Recording</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              ReelVideo();
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>Reel Video</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

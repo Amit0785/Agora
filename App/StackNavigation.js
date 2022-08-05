@@ -11,6 +11,8 @@ import CallScreen from './CallScreen';
 import StreamMessage from './StreamMessage';
 import StreamMessage2 from './StreamMessage2';
 import Recording from './Recording';
+import LiveFunctional from './LiveFunctional';
+import Reel from './Reel';
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
@@ -28,6 +30,8 @@ const StackNavigation = () => {
 
         <Stack.Screen name="CallScreen" component={CallScreen} />
         <Stack.Screen name="Recording" component={Recording} />
+        <Stack.Screen name="LiveFunctional" component={LiveFunctional} />
+        <Stack.Screen name="Reel" component={Reel} />
       </Stack.Navigator>
     </NavigationContainer>
   );
