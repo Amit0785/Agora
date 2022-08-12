@@ -12,3 +12,6 @@ const agoraTexting =
 
 const liveVideoClassComp =
   'https://medium.com/geekculture/building-a-live-audio-streaming-react-native-app-with-agora-acff6e7fd68f';
+
+const agoraMaster =
+  'https://github.com/AgoraIO-Community/react-native-agora/tree/master/example';

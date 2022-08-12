@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "442438432986",
+    "firebase_url": "https://qpace-d9d63-default-rtdb.firebaseio.com",
+    "project_id": "qpace-d9d63",
+    "storage_bucket": "qpace-d9d63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442438432986:android:81d8d2c962e2aa18fb0de3",
+        "android_client_info": {
+          "package_name": "com.qspace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442438432986-ej4r7g29226qo5a96c3k7qsg3t5g7unl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOZ3lKcr2X9KnbeEHfupe8UWy-Jn3Tjxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442438432986-ej4r7g29226qo5a96c3k7qsg3t5g7unl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

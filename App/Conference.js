@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet, Share} from 'react-native';
-import AgoraUIKit from 'agora-rn-uikit';
+import AgoraUIKit, {VideoRenderMode, PropsInterface} from 'agora-rn-uikit';
 //import {useNavigation} from '@react-navigation/native';
 
 export default function Conference(props) {
@@ -30,21 +30,78 @@ export default function Conference(props) {
   };
 
   const styleProps = {
-    theme: '#000',
-    localBtnStyles: {
-      muteLocalAudio: localButtonStyle,
-      muteLocalVideo: localButtonStyle,
-      switchCamera: localButtonStyle,
-      fullScreen: localButtonStyle,
+    iconSize: 30,
+    theme: '#ffffffee',
+    videoMode: {
+      max: VideoRenderMode.Hidden,
+      min: VideoRenderMode.Hidden,
     },
+    overlayContainer: {
+      backgroundColor: '#2edb8533',
+      opacity: 1,
+    },
+    localBtnStyles: {
+      muteLocalVideo: btnStyle,
+      muteLocalAudio: btnStyle,
+      switchCamera: btnStyle,
+      endCall: {
+        borderRadius: 0,
+        width: 50,
+        height: 50,
+        backgroundColor: '#f66',
+        borderWidth: 0,
+      },
+    },
+    localBtnContainer: {
+      backgroundColor: '#fff',
+      bottom: 0,
+      paddingVertical: 10,
+      borderWidth: 4,
+      borderColor: '#2edb85',
+      height: 80,
+    },
+    maxViewRemoteBtnContainer: {
+      top: 0,
+      alignSelf: 'flex-end',
+    },
+    remoteBtnStyles: {
+      muteRemoteAudio: remoteBtnStyle,
+      muteRemoteVideo: remoteBtnStyle,
+      remoteSwap: remoteBtnStyle,
+      minCloseBtnStyles: remoteBtnStyle,
+    },
+    minViewContainer: {
+      bottom: 80,
+      top: undefined,
+      backgroundColor: '#fff',
+      borderColor: '#E92D87',
+      borderWidth: 4,
+      height: '26%',
+    },
+    minViewStyles: {
+      height: '100%',
+    },
+    maxViewStyles: {
+      height: '64%',
+    },
+    UIKitContainer: {height: '94%'},
   };
+
+  const btnStyle = {
+    borderRadius: 2,
+    width: 40,
+    height: 40,
+    backgroundColor: '#E92D87',
+    borderWidth: 0,
+  };
+  const remoteBtnStyle = {backgroundColor: '#E92D87'};
 
   return (
     <>
       <AgoraUIKit
         rtcProps={rtcProps}
         callbacks={callbacks}
-        //styleProps={styleProps}
+        styleProps={styleProps}
       />
       <TouchableOpacity style={styles.shareButton} onPress={onShare}>
         <Text style={styles.shareButtonText}>Share</Text>

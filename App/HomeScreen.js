@@ -31,11 +31,16 @@ const HomeScreen = props => {
   const joinConference = () =>
     props.navigation.navigate('Conference', {channel: val});
 
+  const NewVideoCall = () =>
+    props.navigation.navigate('NewVideoCall', {channel: val});
+
   const createLive = () =>
     props.navigation.navigate('Live', {type: 'create', channel: value});
 
   const joinLive = () =>
     props.navigation.navigate('Live', {type: 'join', channel: value});
+  const joinLive2 = () =>
+    props.navigation.navigate('Live2', {type: 'join', channel: value});
 
   const CallScreen = () => {
     props.navigation.navigate('CallScreen');
@@ -91,6 +96,21 @@ const HomeScreen = props => {
 
           <TouchableOpacity
             onPress={() => {
+              NewVideoCall();
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text> New Video Call</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
               createLive();
             }}
             style={{
@@ -127,6 +147,20 @@ const HomeScreen = props => {
               backgroundColor: 'peru',
             }}>
             <Text> Join Live</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              joinLive2();
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text> Join Live2</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

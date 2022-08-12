@@ -9,6 +9,7 @@ import {
   Share,
   TouchableOpacity,
   Image,
+  TextInput,
 } from 'react-native';
 
 import RtcEngine, {
@@ -19,11 +20,13 @@ import RtcEngine, {
   VideoRemoteState,
 } from 'react-native-agora';
 
+import {v4 as uuid} from 'uuid';
+import database from '@react-native-firebase/database';
+
 const dimensions = {
   width: Dimensions.get('window').width,
   height: Dimensions.get('window').height,
 };
-
 const videoStateMessage = state => {
   switch (state) {
     case VideoRemoteState.Stopped:
@@ -123,6 +126,26 @@ export default function Live(props) {
     };
   }, []);
 
+  const sendFunc = () => {
+    const id = uuid();
+    let msgData = {
+      id: id,
+      message: 'What is your age',
+      amount: 50,
+      email: 'amit.singh@brainiuminfotech.com',
+    };
+    const newReference = database()
+      .ref('/live/' + props.route.params.channel)
+      .push();
+    msgData.id = newReference.key;
+
+    newReference.set(msgData).then(async () => {
+      //Hud.showHud();
+
+      console.log('Last text send Api====>', msgData);
+    });
+  };
+
   const renderHost = () =>
     broadcasterVideoState === VideoRemoteState.Decoding ? (
       <RtcRemoteView.SurfaceView
@@ -209,16 +232,24 @@ export default function Live(props) {
                 </TouchableOpacity>
               </>
             ) : (
-              <View
+              <TouchableOpacity
+                onPress={() => {
+                  sendFunc();
+                }}
                 style={{
-                  width: 50,
+                  width: 150,
                   height: 50,
                   marginVertical: 15,
+                  position: 'absolute',
+                  top: -105,
+                  alignItems: 'center',
+                  justifyContent: 'center',
 
                   //backgroundColor: '#3AB0FF',
-                  //backgroundColor: '#E1006E',
-                }}
-              />
+                  backgroundColor: '#E1006E',
+                }}>
+                <Text style={{fontSize: 16}}>Send Message</Text>
+              </TouchableOpacity>
             )}
           </View>
           <View
