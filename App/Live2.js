@@ -127,9 +127,9 @@ export default function Live(props) {
   }, []);
 
   const sendFunc = () => {
-    const id = uuid();
+    var id = uuid();
     let msgData = {
-      id: id,
+      _id: id,
       message: 'What is your age',
       amount: 50,
       email: 'amit.singh@brainiuminfotech.com',
@@ -140,6 +140,25 @@ export default function Live(props) {
     msgData.id = newReference.key;
 
     newReference.set(msgData).then(async () => {
+      //Hud.showHud();
+
+      console.log('Last text send Api====>', msgData);
+    });
+  };
+  const sendFunc2 = () => {
+    var id = uuid();
+    let msgData = {
+      _id: id,
+      message: 'What is your name',
+      amount: 50,
+      email: 'amit.singh@brainiuminfotech.com',
+    };
+    const newReference = database()
+      .ref('/live/' + props.route.params.channel)
+      .push();
+    msgData.id = newReference.key;
+
+    newReference.set(JSON.stringify(msgData)).then(async () => {
       //Hud.showHud();
 
       console.log('Last text send Api====>', msgData);
@@ -232,24 +251,44 @@ export default function Live(props) {
                 </TouchableOpacity>
               </>
             ) : (
-              <TouchableOpacity
-                onPress={() => {
-                  sendFunc();
-                }}
-                style={{
-                  width: 150,
-                  height: 50,
-                  marginVertical: 15,
-                  position: 'absolute',
-                  top: -105,
-                  alignItems: 'center',
-                  justifyContent: 'center',
+              <>
+                <TouchableOpacity
+                  onPress={() => {
+                    sendFunc();
+                  }}
+                  style={{
+                    width: 150,
+                    height: 50,
+                    marginVertical: 15,
+                    position: 'absolute',
+                    top: -155,
+                    alignItems: 'center',
+                    justifyContent: 'center',
 
-                  //backgroundColor: '#3AB0FF',
-                  backgroundColor: '#E1006E',
-                }}>
-                <Text style={{fontSize: 16}}>Send Message</Text>
-              </TouchableOpacity>
+                    //backgroundColor: '#3AB0FF',
+                    backgroundColor: '#E1006E',
+                  }}>
+                  <Text style={{fontSize: 16}}>Send Message</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    sendFunc2();
+                  }}
+                  style={{
+                    width: 150,
+                    height: 50,
+                    marginVertical: 15,
+                    position: 'absolute',
+                    top: -55,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+
+                    //backgroundColor: '#3AB0FF',
+                    backgroundColor: '#E1006E',
+                  }}>
+                  <Text style={{fontSize: 16}}>String Message</Text>
+                </TouchableOpacity>
+              </>
             )}
           </View>
           <View

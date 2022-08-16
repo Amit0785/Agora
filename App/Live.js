@@ -80,6 +80,10 @@ export default function Live(props) {
   };
 
   const [joined, setJoined] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [messageTag, setMessageTag] = useState('');
+  const [index, setIndex] = useState(0);
+  const [messageStatus, setMessageStatus] = useState(false);
   const [broadcasterVideoState, setBroadcasterVideoState] = useState(
     VideoRemoteState.Decoding,
   );
@@ -124,21 +128,29 @@ export default function Live(props) {
       .on('child_added', snapshot => {
         console.log('A new node has been added==>', snapshot.val());
 
-        setMessages([snapshot.val(), ...messages]);
-        //messages.push(snapshot.val());
-        console.log('MESSAGES in useState==>', messages);
+        //console.log('------>', messages.length);
+        //setMessages(state => [...state, snapshot.val()]);
+        // var temp = [...messages, snapshot.val()];
+        // setMessages(temp);
+        messages.push(snapshot.val());
+
+        console.log('------>', messages.length);
+        console.log('messages===>', messages);
+        if (messages.length !== 0) {
+          //console.log('hello');
+          setMessageStatus(true);
+        }
       });
     return () => {
       AgoraEngine.current.destroy();
       database()
         .ref('/live' + props.route.params.channel)
         .off('child_added', onChildAdd);
+
+      deleteChat();
     };
   }, [props.route.params.channel]);
 
-  const [messages, setMessages] = useState([]);
-  const [messageTag, setMessageTag] = useState('');
-  const [index, setIndex] = useState(0);
   console.log('MESSAGES in .js==>', messages.length);
 
   const renderHost = () =>
@@ -169,7 +181,7 @@ export default function Live(props) {
 
   const replyAns = () => {
     console.log('messages.length====>', messages.length);
-    if (messages.length != 0) {
+    if (messages.length !== 0) {
       console.log('Message===>', messages[0]);
       // setIndex(index + 1);
       database()
@@ -179,10 +191,15 @@ export default function Live(props) {
           messages.pop();
           console.log('messages===>', messages);
           console.log('messages.length pop====>', messages.length);
+          if (messages.length === 0) {
+            setMessageStatus(false);
+          }
         })
         .catch(() => {
           console.log('Error in deleting');
         });
+    } else {
+      setMessageStatus(false);
     }
   };
   const deleteChat = () => {
@@ -193,7 +210,7 @@ export default function Live(props) {
       .then(() => {
         console.log('Data has been deleted');
         setMessages([]);
-        props.navigation.goBack();
+        //props.navigation.goBack();
       })
       .catch(() => {
         console.log('Error in deleting');
@@ -234,7 +251,7 @@ export default function Live(props) {
 
             {isBroadcaster ? (
               <>
-                {messages.length !== 0 ? (
+                {messageStatus ? (
                   <TouchableOpacity
                     onPress={() => {
                       replyAns();
