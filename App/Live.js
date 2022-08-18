@@ -179,29 +179,29 @@ export default function Live(props) {
     props.navigation.goBack();
   };
 
-  const replyAns = () => {
-    console.log('messages.length====>', messages.length);
-    if (messages.length !== 0) {
-      console.log('Message===>', messages[0]);
-      // setIndex(index + 1);
-      database()
-        .ref(`/live/${props.route.params.channel}/${messages[0].id}`)
-        .remove()
-        .then(() => {
-          messages.pop();
-          console.log('messages===>', messages);
-          console.log('messages.length pop====>', messages.length);
-          if (messages.length === 0) {
-            setMessageStatus(false);
-          }
-        })
-        .catch(() => {
-          console.log('Error in deleting');
-        });
-    } else {
-      setMessageStatus(false);
-    }
-  };
+  // const replyAns = () => {
+  //   console.log('messages.length====>', messages.length);
+  //   if (messages.length !== 0) {
+  //     console.log('Message===>', messages[0]);
+  //     // setIndex(index + 1);
+  //     database()
+  //       .ref(`/live/${props.route.params.channel}/${messages[0].id}`)
+  //       .remove()
+  //       .then(() => {
+  //         messages.shift();
+  //         console.log('messages===>', messages);
+  //         console.log('messages.length pop====>', messages.length);
+  //         if (messages.length === 0) {
+  //           setMessageStatus(false);
+  //         }
+  //       })
+  //       .catch(() => {
+  //         console.log('Error in deleting');
+  //       });
+  //   } else {
+  //     setMessageStatus(false);
+  //   }
+  // };
   const deleteChat = () => {
     console.log('Delete Chat');
     database()
@@ -215,6 +215,19 @@ export default function Live(props) {
       .catch(() => {
         console.log('Error in deleting');
       });
+  };
+
+  const replyAns = () => {
+    console.log('messages.length', messages.length);
+    console.log('index==>', index);
+    if (messages.length > index) {
+      setIndex(index + 1);
+
+      setAnswerStatus(false);
+      setMessageStatus(true);
+    } else {
+      setMessageStatus(false);
+    }
   };
   return (
     <View style={styles.container}>
@@ -280,7 +293,7 @@ export default function Live(props) {
                         fontWeight: '400',
                         color: '#151143',
                       }}>
-                      {messages[0].message}
+                      {messages[index].message}
                     </Text>
                   </TouchableOpacity>
                 ) : null}
