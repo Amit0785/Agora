@@ -42,14 +42,6 @@ const App = () => {
 
     //console.log('==firebase.apps.length==>', firebase.apps.length);
 
-    if (!firebase.apps.length) {
-      firebase.initializeApp(credentials);
-      console.log(
-        '==firebase.initializeApp(credentials)===>',
-        firebase.initializeApp(credentials),
-      );
-    }
-
     //isReadyRef.current = false;
     requestUserPermission();
   };

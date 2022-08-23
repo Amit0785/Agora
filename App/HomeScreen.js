@@ -2,7 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
   TouchableOpacity,
   SafeAreaView,
   Dimensions,
@@ -60,7 +59,19 @@ const HomeScreen = props => {
   };
   return (
     <SafeAreaView style={{flex: 1, alignItems: 'center'}}>
-      <ScrollView>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: 10,
+          marginLeft: 0,
+          borderWidth: 0,
+          borderColor: 'blue',
+          width: '100%',
+          justifyContent: 'center',
+          //marginTop: 30,
+          alignItems: 'center',
+        }}>
         <View style={{alignItems: 'center', paddingVertical: 30}}>
           <Text>Video Conference App</Text>
 
@@ -234,6 +245,21 @@ const HomeScreen = props => {
               backgroundColor: 'peru',
             }}>
             <Text>Reel Video</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('PayPal');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>PayPal</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

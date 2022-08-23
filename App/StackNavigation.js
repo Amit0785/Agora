@@ -15,6 +15,7 @@ import Recording from './Recording';
 import LiveFunctional from './LiveFunctional';
 import Reel from './Reel';
 import NewVideoCall from './NewVideoCall';
+import PayPal from './PayPal';
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
@@ -37,6 +38,8 @@ const StackNavigation = () => {
         <Stack.Screen name="Reel" component={Reel} />
 
         <Stack.Screen name="NewVideoCall" component={NewVideoCall} />
+
+        <Stack.Screen name="PayPal" component={PayPal} />
       </Stack.Navigator>
     </NavigationContainer>
   );
