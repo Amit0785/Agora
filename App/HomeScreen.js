@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   Dimensions,
   ScrollView,
+  RefreshControl,
 } from 'react-native';
 import React, {useState} from 'react';
 import 'react-native-get-random-values';
@@ -13,10 +14,21 @@ import {v4 as uuid} from 'uuid';
 //import CallScreen from './CallScreen';
 const {width, height} = Dimensions.get('window');
 
+const wait = timeout => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+};
+
 const HomeScreen = props => {
   // const [joinChannel, setJoinChannel] = useState(
   //   '0d3c129f-e8b4-4615-8410-6ca491dfa658',
   // );
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
 
   const [value, setValue] = useState('d36ce652-a704-4092-a6a2-c79cda8094d7');
   const val = '78209773-8430-440a-9b73-31e12ff887a7';
@@ -62,6 +74,9 @@ const HomeScreen = props => {
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         contentContainerStyle={{
           paddingBottom: 10,
           marginLeft: 0,

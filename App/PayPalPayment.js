@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  RefreshControl,
 } from 'react-native';
-
+import CountryPicker from 'react-native-country-picker-modal';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {RFValue} from 'react-native-responsive-fontsize';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -20,6 +21,10 @@ import {KeyboardAvoidingScrollView} from 'react-native-keyboard-avoiding-scroll-
 import Stripe from 'react-native-stripe-api';
 
 const {width, height} = Dimensions.get('window');
+
+const wait = timeout => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+};
 
 const PayPalPayment = props => {
   const numb = useRef();
@@ -34,6 +39,22 @@ const PayPalPayment = props => {
   const [expYear, setExpYear] = useState('');
   const [expMonth, setExpMonth] = useState('');
   const [cvv, setCvv] = useState(null);
+
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(1000).then(() => {
+      setRefreshing(false);
+      console.log('Hello');
+      setName('');
+      setNumber('');
+      setZipCode('');
+      setExpYear('');
+      setExpMonth('');
+      setCvv('');
+    });
+  }, []);
 
   const params = {
     // mandatory
@@ -57,6 +78,19 @@ const PayPalPayment = props => {
 
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(null);
+  const [countryCode, setCountryCode] = useState(null);
+  const [country, setCountry] = useState(null);
+  const [withCountryNameButton, setWithCountryNameButton] = useState(false);
+  const [currency, setCurrency] = useState('');
+  const [withFlag, setWithFlag] = useState(true);
+
+  const onSelect = country => {
+    setCountryCode(country.cca2);
+    setCountry(country.name);
+    setWithCountryNameButton(true);
+    setCurrency(country.currency[0]);
+    console.log('Country Details===>', country);
+  };
 
   const handleCardPayPress = async () => {
     // const options = {}
@@ -70,6 +104,18 @@ const PayPalPayment = props => {
     //   console.log('handleCardPayPress Error ', error);
     //   setLoading(false);
     // }
+
+    const customerData = {
+      name: name,
+      cardNumber: number,
+      expiryMonth: expMonth,
+      expiryYear: expYear,
+      cvv: cvv,
+      amount: props.route.params.amount,
+      currency: currency,
+    };
+
+    console.log('customerData===>', customerData);
   };
 
   //console.log(typeof (parseInt(year)))
@@ -78,8 +124,21 @@ const PayPalPayment = props => {
     <SafeAreaView
       style={{flex: 1, backgroundColor: '#ffffff', alignItems: 'center'}}
       nestedScrollEnabled={true}>
-      {/* <ScrollView>
-        <View style={styles.whole}>
+      <KeyboardAvoidingScrollView
+        bounces={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+        //behavior="padding"
+        showsVerticalScrollIndicator={false}
+        style={{backgroundColor: '#ffffff', width: width * 0.9}}>
+        <View
+          style={{
+            width: '100%',
+            alignItems: 'center',
+            marginBottom: height * 0.05,
+            marginTop: height * 0.01,
+          }}>
           <View style={styles.header}>
             <TouchableOpacity
 
@@ -98,211 +157,10 @@ const PayPalPayment = props => {
                 name="notifications-active"
                 size={25}
                 color={'blueviolet'}
-                style={{marginLeft: '40%'}}
+                style={{}}
               />
             </TouchableOpacity>
           </View>
-
-          <View style={{height: '11%', margin: '5%'}}>
-            <Text style={{fontSize: RFValue(20)}}>Pay With PayPal</Text>
-
-            <View
-              style={{
-                width: '90%',
-                borderColor: 'grey',
-                marginTop: '5%',
-                flexDirection: 'row',
-                borderWidth: 1,
-                borderStyle: 'dotted',
-                borderRadius: 10,
-              }}>
-              <View style={{width: '50%', margin: '5%'}}>
-                <Text
-                  style={{
-                    fontSize: RFValue(19),
-                    alignSelf: 'center',
-                  }}>
-                  The Faster and Safer way to pay
-                </Text>
-              </View>
-              <View
-                style={{width: '50%', alignContent: 'flex-end', margin: '5%'}}>
-                <Image
-                  source={require('./Assets/Icon/PayPal.png')}
-                  style={{width: '100%', height: '100%'}}
-                />
-              </View>
-            </View>
-          </View>
-
-          <View style={{height: '4%', marginLeft: '-20%', marginTop: '5%'}}>
-            <Text
-              style={{
-                fontSize: RFValue(22),
-                alignSelf: 'center',
-              }}>
-              Pay With Credit Card or Debit Card
-            </Text>
-          </View>
-
-          <View
-            style={{
-              borderColor: 'grey',
-              height: '4%',
-              marginLeft: '3%',
-              flexDirection: 'row',
-              alignSelf: 'flex-start',
-            }}>
-            <Image
-              source={require('./Assets/Icon/Whole.jpg')}
-              style={{width: '45%', height: '95%'}}
-            />
-          </View>
-
-          <View
-            style={{
-              alignSelf: 'flex-start',
-              marginLeft: '3%',
-              borderBottomColor: 'darkgray',
-              borderBottomWidth: 1,
-            }}>
-            <Text>Payment Amount</Text>
-            <View style={{flexDirection: 'row'}}>
-              <Text style={{fontSize: RFValue(22), fontWeight: 'bold'}}>
-                $ 500.00
-              </Text>
-
-              <TouchableOpacity
-                style={{marginLeft: '70%'}}
-                //    onPress={() => props.naviProps.openDrawer()}
-              >
-                <Icon name="edit" size={23} color={'dimgrey'} />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <TextInput
-            style={styles.input}
-            onChangeText={setName}
-            value={name}
-            placeholder="Name on Card"
-            autoCapitalize="words"
-            onSubmitEditing={() => {
-              numb.current.focus();
-            }}
-          />
-
-          <TextInput
-            style={styles.input}
-            onChangeText={setNumber}
-            value={number}
-            placeholder="Card Number"
-            keyboardType="numeric"
-            maxLength={16}
-            ref={numb}
-            onSubmitEditing={() => {
-              mon.current.focus();
-            }}
-          />
-          <View style={{flexDirection: 'row', ...styles.input}}>
-            <Text style={{fontSize: RFValue(25), alignSelf: 'center'}}>
-              Show Address
-            </Text>
-            <TextInput
-              style={{marginLeft: '25%'}}
-              onChangeText={setExpMonth}
-              value={expMonth}
-              placeholder="MM"
-              maxLength={2}
-              keyboardType="numeric"
-              ref={mon}
-              onSubmitEditing={() => {
-                yr.current.focus();
-              }}
-            />
-            <TextInput
-              style={{}}
-              onChangeText={setExpYear}
-              value={expYear}
-              placeholder="YY"
-              maxLength={2}
-              keyboardType="numeric"
-              ref={yr}
-              onSubmitEditing={() => {
-                ccv.current.focus();
-              }}
-            />
-
-            <TextInput
-              style={{marginLeft: '5%'}}
-              onChangeText={setCvv}
-              value={cvv}
-              placeholder="CVV"
-              maxLength={3}
-              keyboardType="numeric"
-              ref={ccv}
-              onSubmitEditing={() => {
-                zipPostal.current.focus();
-              }}
-            />
-          </View>
-
-          <TextInput
-            style={styles.input}
-            onChangeText={setZipCode}
-            value={zipCode}
-            placeholder="ZIP/Postal Code"
-            maxLength={6}
-            keyboardType="numeric"
-            ref={zipPostal}
-          />
-          <View
-            style={{
-              backgroundColor: 'blue',
-              width: '90%',
-              height: '5%',
-              marginTop: '10%',
-            }}>
-            <TouchableOpacity
-              style={{
-                backgroundColor: 'navy',
-                width: '100%',
-                height: '100%',
-                justifyContent: 'center',
-                flexDirection: 'row',
-              }}
-              onPress={handleCardPayPress}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 20,
-                  margin: '1%',
-                  alignSelf: 'center',
-                }}>
-                Pay $500.00
-              </Text>
-              <Icons
-                name="arrow-forward"
-                size={23}
-                color={'white'}
-                style={{alignSelf: 'center', marginLeft: '50%'}}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView> */}
-
-      <KeyboardAvoidingScrollView
-        bounces={false}
-        //behavior="padding"
-        showsVerticalScrollIndicator={false}
-        style={{backgroundColor: '#ffffff', width: width * 0.9}}>
-        <View
-          style={{
-            width: '100%',
-            alignItems: 'center',
-            marginBottom: height * 0.15,
-            marginTop: height * 0.01,
-          }}>
           <View style={{width: '100%'}}>
             <Text style={{fontSize: RFValue(20)}}>Pay With PayPal</Text>
           </View>
@@ -420,8 +278,10 @@ const PayPalPayment = props => {
               flexDirection: 'row',
               ...styles.input,
               justifyContent: 'space-between',
+              alignItems: 'center',
+              paddingRight: 10,
             }}>
-            <Text
+            {/* <Text
               style={{
                 fontSize: RFValue(25),
                 alignSelf: 'center',
@@ -429,38 +289,57 @@ const PayPalPayment = props => {
                 //backgroundColor: 'red',
               }}>
               Show Address
-            </Text>
+            </Text> */}
+            <CountryPicker
+              {...{
+                countryCode,
+                withFlag,
+                withCountryNameButton,
+
+                onSelect,
+              }}
+              //visible={shownCountry}
+            />
             <View
               style={{
-                width: '30%',
+                width: '35%',
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <TextInput
-                style={{}}
-                onChangeText={setExpMonth}
-                value={expMonth}
-                placeholder="MM"
-                maxLength={2}
-                keyboardType="numeric"
-                ref={mon}
-                onSubmitEditing={() => {
-                  yr.current.focus();
-                }}
-              />
-              <TextInput
-                style={{}}
-                onChangeText={setExpYear}
-                value={expYear}
-                placeholder="YY"
-                maxLength={2}
-                keyboardType="numeric"
-                ref={yr}
-                onSubmitEditing={() => {
-                  ccv.current.focus();
-                }}
-              />
+              <View
+                style={{
+                  width: '50%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                <TextInput
+                  style={{}}
+                  onChangeText={setExpMonth}
+                  value={expMonth}
+                  placeholder="MM"
+                  maxLength={2}
+                  keyboardType="numeric"
+                  ref={mon}
+                  onSubmitEditing={() => {
+                    yr.current.focus();
+                  }}
+                />
+                <Text style={{color: 'grey'}}>/</Text>
+                <TextInput
+                  style={{}}
+                  onChangeText={setExpYear}
+                  value={expYear}
+                  placeholder="YY"
+                  maxLength={2}
+                  keyboardType="numeric"
+                  ref={yr}
+                  onSubmitEditing={() => {
+                    ccv.current.focus();
+                  }}
+                />
+              </View>
 
               <TextInput
                 style={{}}
@@ -476,6 +355,28 @@ const PayPalPayment = props => {
               />
             </View>
           </View>
+
+          {/* <View
+            style={{
+              borderBottomWidth: 0.5,
+              borderBottomColor: 'darkgray',
+              backgroundColor: '#fff',
+              justifyContent: 'center',
+              height: 50,
+              width: '100%',
+              marginVertical: height * 0.01,
+            }}>
+            <CountryPicker
+              {...{
+                countryCode,
+                withFlag,
+                withCountryNameButton,
+
+                onSelect,
+              }}
+              //visible={shownCountry}
+            />
+          </View> */}
 
           <TextInput
             style={styles.input}
@@ -496,8 +397,7 @@ const PayPalPayment = props => {
               justifyContent: 'center',
               flexDirection: 'row',
             }}
-            // onPress={handleCardPayPress}
-          >
+            onPress={() => handleCardPayPress()}>
             <Text
               style={{
                 color: 'white',
@@ -530,21 +430,21 @@ const styles = StyleSheet.create({
     marginBottom: '100%',
   },
   header: {
-    height: '5%',
+    height: height * 0.1,
     width: '100%',
-    marginLeft: '-4%',
-    flexDirection: 'row',
-    alignItems: 'center',
     //backgroundColor: 'red',
-    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
 
   title: {
-    textAlign: 'center',
+    // textAlign: 'center',
     color: 'black',
     fontSize: RFValue(20, 580),
     //fontWeight:'bold',
-    marginLeft: '24%',
+    //marginLeft: '24%',
     fontFamily: 'Nunito-BoldItalic',
   },
   input: {
@@ -552,7 +452,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: 'darkgray',
     backgroundColor: 'white',
-    height: RFValue(50),
+    height: 50,
     width: '100%',
   },
 });
