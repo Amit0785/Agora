@@ -67,12 +67,18 @@ const HomeScreen = props => {
           marginLeft: 0,
           borderWidth: 0,
           borderColor: 'blue',
-          width: '100%',
+          width: width,
           justifyContent: 'center',
           //marginTop: 30,
           alignItems: 'center',
         }}>
-        <View style={{alignItems: 'center', paddingVertical: 30}}>
+        <View
+          style={{
+            alignItems: 'center',
+            paddingVertical: 30,
+            width: width,
+            // backgroundColor: 'blue',
+          }}>
           <Text>Video Conference App</Text>
 
           <TouchableOpacity
@@ -249,7 +255,21 @@ const HomeScreen = props => {
 
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('PayPal');
+              props.navigation.navigate('CountryCurrency');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>CountryCurrency</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('PayPalPayment', {amount: '$500'});
             }}
             style={{
               width: 150,
