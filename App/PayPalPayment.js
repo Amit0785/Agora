@@ -10,6 +10,7 @@ import {
   Image,
   Dimensions,
   RefreshControl,
+  Alert,
 } from 'react-native';
 import CountryPicker from 'react-native-country-picker-modal';
 import Icons from 'react-native-vector-icons/Ionicons';
@@ -93,29 +94,56 @@ const PayPalPayment = props => {
   };
 
   const handleCardPayPress = async () => {
-    // const options = {}
-    // try {
-    //   setLoading(true);
-    //   const token = await stripe.createTokenWithCard(params);
-    //   console.log('Token from Card ', token);
-    //   setToken(token);
-    //   setLoading(false);
-    // } catch (error) {
-    //   console.log('handleCardPayPress Error ', error);
-    //   setLoading(false);
-    // }
+    const options = {};
+    try {
+      setLoading(true);
+      const token = await stripe.createTokenWithCard(params);
+      console.log('Token from Card ', token);
+      setToken(token);
+      setLoading(false);
+    } catch (error) {
+      console.log('handleCardPayPress Error ', error);
+      setLoading(false);
+    }
+    if (name.trim() == '') {
+      Alert.alert('Pls enter valid name');
+    } else if (number.trim() == '') {
+      Alert.alert('Pls enter valid number');
+    } else if (expMonth.trim() == '') {
+      Alert.alert('Pls enter valid expMonth');
+    } else if (expYear.trim() == '') {
+      Alert.alert('Pls enter valid expMonth');
+    } else if (cvv.trim() == '') {
+      Alert.alert('Pls enter valid cvv');
+    } else if (currency.trim() == '') {
+      Alert.alert('Pls enter valid country');
+    } else {
+      const apiKey =
+        'pk_test_51LVVOsSDxTeq9QrbzZZh9ChWwf0q1tBCSPmOeryf5b4ozxLOQOOVLZov12Q6X6HcoTQuaXrzstNr2mwCiQSOGf1U00S2gS4qTJ';
+      const client = new Stripe(apiKey);
+      console.log('customerData===>', customerData);
+      console.log('client==>', client);
+      const token = await client.createToken({
+        number: '4242424242424242',
+        exp_month: expMonth,
+        exp_year: expYear,
+        cvc: cvv,
+      });
 
-    const customerData = {
-      name: name,
-      cardNumber: number,
-      expiryMonth: expMonth,
-      expiryYear: expYear,
-      cvv: cvv,
-      amount: props.route.params.amount,
-      currency: currency,
-    };
+      console.log('token===>', token.id);
 
-    console.log('customerData===>', customerData);
+      if (token != null && token != undefined) {
+        const customerData = {
+          name: name,
+          cardNumber: number,
+          expiryMonth: expMonth,
+          expiryYear: expYear,
+          cvv: cvv,
+          amount: props.route.params.amount,
+          currency: currency,
+        };
+      }
+    }
   };
 
   //console.log(typeof (parseInt(year)))

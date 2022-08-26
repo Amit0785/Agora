@@ -17,6 +17,7 @@ import Reel from './Reel';
 import NewVideoCall from './NewVideoCall';
 import CountryCurrency from './CountryCurrency';
 import PayPalPayment from './PayPalPayment';
+import CheckboxExp from './CheckboxExp';
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
@@ -42,6 +43,7 @@ const StackNavigation = () => {
 
         <Stack.Screen name="CountryCurrency" component={CountryCurrency} />
         <Stack.Screen name="PayPalPayment" component={PayPalPayment} />
+        <Stack.Screen name="CheckboxExp" component={CheckboxExp} />
       </Stack.Navigator>
     </NavigationContainer>
   );

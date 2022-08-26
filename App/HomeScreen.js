@@ -296,6 +296,20 @@ const HomeScreen = props => {
             }}>
             <Text>PayPal</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('CheckboxExp');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>Checkbox Example</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
