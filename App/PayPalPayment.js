@@ -34,12 +34,12 @@ const PayPalPayment = props => {
   const ccv = useRef();
   const zipPostal = useRef();
 
-  const [number, setNumber] = useState(null);
-  const [name, setName] = useState(null);
-  const [zipCode, setZipCode] = useState(null);
+  const [number, setNumber] = useState('');
+  const [name, setName] = useState('');
+  const [zipCode, setZipCode] = useState('');
   const [expYear, setExpYear] = useState('');
   const [expMonth, setExpMonth] = useState('');
-  const [cvv, setCvv] = useState(null);
+  const [cvv, setCvv] = useState('');
 
   const [refreshing, setRefreshing] = React.useState(false);
 
@@ -79,8 +79,8 @@ const PayPalPayment = props => {
 
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(null);
-  const [countryCode, setCountryCode] = useState(null);
-  const [country, setCountry] = useState(null);
+  const [countryCode, setCountryCode] = useState('');
+  const [country, setCountry] = useState('');
   const [withCountryNameButton, setWithCountryNameButton] = useState(false);
   const [currency, setCurrency] = useState('');
   const [withFlag, setWithFlag] = useState(true);
@@ -94,29 +94,29 @@ const PayPalPayment = props => {
   };
 
   const handleCardPayPress = async () => {
-    const options = {};
-    try {
-      setLoading(true);
-      const token = await stripe.createTokenWithCard(params);
-      console.log('Token from Card ', token);
-      setToken(token);
-      setLoading(false);
-    } catch (error) {
-      console.log('handleCardPayPress Error ', error);
-      setLoading(false);
-    }
+    // const options = {};
+    // try {
+    //   setLoading(true);
+    //   const token = await Stripe.createTokenWithCard(params);
+    //   console.log('Token from Card ', token);
+    //   setToken(token);
+    //   setLoading(false);
+    // } catch (error) {
+    //   console.log('handleCardPayPress Error ', error);
+    //   setLoading(false);
+    // }
     if (name.trim() == '') {
-      Alert.alert('Pls enter valid name');
+      return Alert.alert('Pls enter valid name');
     } else if (number.trim() == '') {
-      Alert.alert('Pls enter valid number');
+      return Alert.alert('Pls enter valid number');
     } else if (expMonth.trim() == '') {
-      Alert.alert('Pls enter valid expMonth');
+      return Alert.alert('Pls enter valid expMonth');
     } else if (expYear.trim() == '') {
-      Alert.alert('Pls enter valid expMonth');
+      return Alert.alert('Pls enter valid expMonth');
     } else if (cvv.trim() == '') {
-      Alert.alert('Pls enter valid cvv');
+      return Alert.alert('Pls enter valid cvv');
     } else if (currency.trim() == '') {
-      Alert.alert('Pls enter valid country');
+      return Alert.alert('Pls enter valid country');
     } else {
       const apiKey =
         'pk_test_51LVVOsSDxTeq9QrbzZZh9ChWwf0q1tBCSPmOeryf5b4ozxLOQOOVLZov12Q6X6HcoTQuaXrzstNr2mwCiQSOGf1U00S2gS4qTJ';

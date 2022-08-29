@@ -75,7 +75,7 @@ const CheckboxExp = () => {
   const [select, setselect] = useState([]);
 
   const selectrejectReason = (value, index) => {
-    console.log('reason', value);
+    //console.log('reason', value);
 
     let newArr = [...select];
     newArr[index] = value;
