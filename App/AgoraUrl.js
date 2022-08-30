@@ -19,7 +19,8 @@ const agoraMaster =
 const CometChatUrl =
   'https://www.cometchat.com/chat-sdks-api?utm_term=react%20native%20video%20chat&utm_campaign=IN-+React+Chat+SDK&utm_source=adwords&utm_medium=ppc&hsa_acc=7711039152&hsa_cam=17292849282&hsa_grp=136314566105&hsa_ad=598884658217&hsa_src=g&hsa_tgt=kwd-1433907445579&hsa_kw=react%20native%20video%20chat&hsa_mt=p&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAjw0dKXBhBPEiwA2bmObY7awqvmaOp9mv1PNKppU0R42ztiLmD1_Kofdu8rUNK8rC2HoqOhFhoC778QAvD_BwE';
 
-const ReduxUrl = 'https://www.youtube.com/watch?v=9boMnm5X9ak';
+const ReduxUrl =
+  'https://www.youtube.com/watch?v=YAevAj6X6XU&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK&index=7';
 
 const UseContextUrl = 'https://www.youtube.com/watch?v=7W25F5bu_aM';
 
@@ -29,3 +30,5 @@ const ReactReduxUrl =
   'https://www.youtube.com/watch?v=9boMnm5X9ak&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK';
 
 // linear gradient =https://codeburst.io/linear-gradient-for-border-color-in-react-native-5bcab3eea1c9
+
+//login/registration in firebase:='https://www.youtube.com/watch?v=ql4J6SpLXZA&t=324s'
