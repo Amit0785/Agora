@@ -32,3 +32,5 @@ const ReactReduxUrl =
 // linear gradient =https://codeburst.io/linear-gradient-for-border-color-in-react-native-5bcab3eea1c9
 
 //login/registration in firebase:='https://www.youtube.com/watch?v=ql4J6SpLXZA&t=324s'
+
+//facebook login through firebase auth:='https://rnfirebase.io/auth/social-auth#facebook
