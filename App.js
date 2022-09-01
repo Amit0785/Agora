@@ -2,6 +2,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import firebase from '@react-native-firebase/app';
 import messaging from '@react-native-firebase/messaging';
+import {Provider} from 'react-redux';
+import store from './App/Redux/store';
 
 import StackNavigation from './App/StackNavigation';
 
@@ -73,7 +75,9 @@ const App = () => {
   };
   return (
     <>
-      <StackNavigation />
+      <Provider store={store}>
+        <StackNavigation />
+      </Provider>
     </>
   );
 };

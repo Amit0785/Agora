@@ -29,6 +29,9 @@ const stripeNPM = 'react-native-stripe-api';
 const ReactReduxUrl =
   'https://www.youtube.com/watch?v=9boMnm5X9ak&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK';
 
+const hooksUrl =
+  'https://www.youtube.com/watch?v=cF2lQ_gZeA8&list=PLC3y8-rFHvwisvxhZ135pogtX7_Oe3Q3A';
+
 // linear gradient =https://codeburst.io/linear-gradient-for-border-color-in-react-native-5bcab3eea1c9
 
 //login/registration in firebase:='https://www.youtube.com/watch?v=ql4J6SpLXZA&t=324s'

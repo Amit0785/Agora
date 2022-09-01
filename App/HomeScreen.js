@@ -310,6 +310,51 @@ const HomeScreen = props => {
             }}>
             <Text>Checkbox Example</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('CakeComponent');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: '#00FF7F',
+            }}>
+            <Text>Redux Cake Example</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('IceCreamComponent');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: '#00FF7F',
+            }}>
+            <Text>Redux IceCream Example</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('CakeComponentHooks');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: '#B6D0E2',
+            }}>
+            <Text>Redux Example with Hooks</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

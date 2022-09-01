@@ -18,6 +18,9 @@ import NewVideoCall from './NewVideoCall';
 import CountryCurrency from './CountryCurrency';
 import PayPalPayment from './PayPalPayment';
 import CheckboxExp from './CheckboxExp';
+import CakeComponent from './CakeComponent';
+import IceCreamComponent from './IceCreamComponent';
+import CakeComponentHooks from './CakeComponentHooks';
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
@@ -44,6 +47,13 @@ const StackNavigation = () => {
         <Stack.Screen name="CountryCurrency" component={CountryCurrency} />
         <Stack.Screen name="PayPalPayment" component={PayPalPayment} />
         <Stack.Screen name="CheckboxExp" component={CheckboxExp} />
+
+        <Stack.Screen name="CakeComponent" component={CakeComponent} />
+        <Stack.Screen name="IceCreamComponent" component={IceCreamComponent} />
+        <Stack.Screen
+          name="CakeComponentHooks"
+          component={CakeComponentHooks}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

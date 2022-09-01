@@ -1,3 +1,5 @@
+import {BUY_ICECREAM, ADD_ICECREAM} from '../Action';
+
 const initialState = {
   numOfIceCreams: 20,
 };

@@ -1,3 +1,5 @@
+import {BUY_CAKE, ADD_CAKE} from '../Action/index';
+
 const initialState = {
   numOfCakes: 10,
 };
