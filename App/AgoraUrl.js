@@ -37,3 +37,8 @@ const hooksUrl =
 //login/registration in firebase:='https://www.youtube.com/watch?v=ql4J6SpLXZA&t=324s'
 
 //facebook login through firebase auth:='https://rnfirebase.io/auth/social-auth#facebook
+
+const whatsappYoutubeVideo = 'https://www.youtube.com/watch?v=g_nSRcjzivw';
+
+const fakeApi = 'https://dummyjson.com/';
+const fakeApi1 = 'https://jsonplaceholder.typicode.com/';

@@ -343,7 +343,7 @@ const HomeScreen = props => {
 
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('CakeComponentHooks');
+              props.navigation.navigate('ReduxComponentHooks');
             }}
             style={{
               width: 150,
@@ -354,6 +354,21 @@ const HomeScreen = props => {
               backgroundColor: '#B6D0E2',
             }}>
             <Text>Redux Example with Hooks</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('UserView');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: '#B6D0E2',
+            }}>
+            <Text>Api through redux</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

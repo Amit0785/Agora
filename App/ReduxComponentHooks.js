@@ -7,10 +7,9 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {addCake, buyCake} from './Redux/Action';
-import {addIceCream, buyIceCream} from './Redux/Action';
+import {addCake, buyCake, addIceCream, buyIceCream} from './Redux/Action';
 
-const CakeComponentHooks = props => {
+const ReduxComponentHooks = props => {
   const numOfCakes = useSelector(state => state.CakeReducer.numOfCakes);
   const numOfIcecream = useSelector(
     state => state.IceCreamReducer.numOfIceCreams,
@@ -29,6 +28,20 @@ const CakeComponentHooks = props => {
         </Text>
         <TouchableOpacity
           onPress={() => {
+            dispatch(buyCake(5));
+          }}
+          style={{
+            width: 150,
+            height: 50,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginVertical: 20,
+            backgroundColor: 'red',
+          }}>
+          <Text>Buy 5 Cake</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
             dispatch(buyCake());
           }}
           style={{
@@ -39,7 +52,7 @@ const CakeComponentHooks = props => {
             marginVertical: 20,
             backgroundColor: 'red',
           }}>
-          <Text>Buy Cake</Text>
+          <Text>Buy 1 Cake</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -95,6 +108,6 @@ const CakeComponentHooks = props => {
   );
 };
 
-export default CakeComponentHooks;
+export default ReduxComponentHooks;
 
 const styles = StyleSheet.create({});

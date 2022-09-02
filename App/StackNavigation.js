@@ -20,7 +20,9 @@ import PayPalPayment from './PayPalPayment';
 import CheckboxExp from './CheckboxExp';
 import CakeComponent from './CakeComponent';
 import IceCreamComponent from './IceCreamComponent';
-import CakeComponentHooks from './CakeComponentHooks';
+import ReduxComponentHooks from './ReduxComponentHooks';
+import ItemContainer from './Redux/View/ItemContainer';
+import UserView from './UserView';
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
@@ -51,9 +53,12 @@ const StackNavigation = () => {
         <Stack.Screen name="CakeComponent" component={CakeComponent} />
         <Stack.Screen name="IceCreamComponent" component={IceCreamComponent} />
         <Stack.Screen
-          name="CakeComponentHooks"
-          component={CakeComponentHooks}
+          name="ReduxComponentHooks"
+          component={ReduxComponentHooks}
         />
+
+        <Stack.Screen name="ItemContainer" component={ItemContainer} />
+        <Stack.Screen name="UserView" component={UserView} />
       </Stack.Navigator>
     </NavigationContainer>
   );
