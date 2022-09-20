@@ -20,7 +20,7 @@ const UserView = ({userData, fetchUsers}) => {
     fetchUsers();
   }, []);
 
-  console.log('userData.loading', userData.loading);
+  // console.log('userData.loading', userData.loading);
 
   return (
     <SafeAreaView style={{flex: 1, alignItems: 'center'}}>

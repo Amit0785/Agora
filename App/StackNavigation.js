@@ -23,6 +23,9 @@ import IceCreamComponent from './IceCreamComponent';
 import ReduxComponentHooks from './ReduxComponentHooks';
 import ItemContainer from './Redux/View/ItemContainer';
 import UserView from './UserView';
+
+import TicTok from './TicTok';
+
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
@@ -59,6 +62,7 @@ const StackNavigation = () => {
 
         <Stack.Screen name="ItemContainer" component={ItemContainer} />
         <Stack.Screen name="UserView" component={UserView} />
+        <Stack.Screen name="TicTok" component={TicTok} />
       </Stack.Navigator>
     </NavigationContainer>
   );

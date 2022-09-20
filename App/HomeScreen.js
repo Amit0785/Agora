@@ -370,6 +370,21 @@ const HomeScreen = props => {
             }}>
             <Text>Api through redux</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('TicTok');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>TIcTok app</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
