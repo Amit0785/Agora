@@ -25,6 +25,7 @@ import ItemContainer from './Redux/View/ItemContainer';
 import UserView from './UserView';
 
 import TicTok from './TicTok';
+import ThumbnailImage from './ThumbnailImage';
 
 const Stack = createStackNavigator();
 
@@ -63,6 +64,7 @@ const StackNavigation = () => {
         <Stack.Screen name="ItemContainer" component={ItemContainer} />
         <Stack.Screen name="UserView" component={UserView} />
         <Stack.Screen name="TicTok" component={TicTok} />
+        <Stack.Screen name="ThumbnailImage" component={ThumbnailImage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

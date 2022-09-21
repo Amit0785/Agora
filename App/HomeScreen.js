@@ -385,6 +385,21 @@ const HomeScreen = props => {
             }}>
             <Text>TIcTok app</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('ThumbnailImage');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>Thumbnail Image</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
