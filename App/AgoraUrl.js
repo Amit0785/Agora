@@ -32,6 +32,9 @@ const ReactReduxUrl =
 const hooksUrl =
   'https://www.youtube.com/watch?v=cF2lQ_gZeA8&list=PLC3y8-rFHvwisvxhZ135pogtX7_Oe3Q3A';
 
+const nodeJsUrl =
+  'https://www.youtube.com/watch?v=IIpiLZGTWuo&list=PLwGdqUZWnOp00IbeN0OtL9dmnasipZ9x8';
+
 // linear gradient =https://codeburst.io/linear-gradient-for-border-color-in-react-native-5bcab3eea1c9
 
 //login/registration in firebase:='https://www.youtube.com/watch?v=ql4J6SpLXZA&t=324s'
