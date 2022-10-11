@@ -45,3 +45,6 @@ const whatsappYoutubeVideo = 'https://www.youtube.com/watch?v=g_nSRcjzivw';
 
 const fakeApi = 'https://dummyjson.com/';
 const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
+
+//to clean junck file in mac
+//"rm -rf ~/Library/Developer/Xcode/DerivedData/*"
