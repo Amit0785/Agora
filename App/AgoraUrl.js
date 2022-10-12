@@ -48,3 +48,6 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 
 //to clean junck file in mac
 //"rm -rf ~/Library/Developer/Xcode/DerivedData/*"
+
+//free css:-
+//"https://www.free-css.com/template-categories/ecommerce"
