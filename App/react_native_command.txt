@@ -1,0 +1,82 @@
+For release app: 
+1) cd android
+
+2) ./gradlew assembleRelease(if doesn't work then do geadlew clean before this command)
+
+For git: 
+0. git init
+
+1.git remote add origin
+
+2.git add .
+
+3.git commit -m “initial commit”
+
+4.git push -u origin <branchname>
+
+5.git checkout -b <branch name>
+
+6.git checkout  <branch name> for switch the branch
+
+
+
+
+//clone the project
+
+7.git clone -b <branch_name> <url>
+
+....................................................................
+1. For reseting the updated file
+
+git reset HEAD~2  
+
+2. To check the git history 
+
+git log
+
+3.Removing from cached
+
+git rm --cached -r . 
+
+4. For removing the exact file from the cached
+
+git rm --cached .git.zip 
+
+----------------------------------------------------------------------------------------
+
+How to remove .hpof file after commit
+
+git filter-branch -f --index-filter "git rm --cached --ignore-unmatch android/java_pid< number >.hprof"
+
+---------------------------------------------------------------------------------------------------
+
+
+git push pull command:-
+
+git branch                      ---> to check the branch
+
+git checkout -b <branch name>   ---> to create & switch to another branch
+
+git add .                       --->to wrap the new changes
+
+git commit -m "<Commit>"
+
+git push origin <branch name>   --->to push in git hub in new branch name
+
+ git checkout main              --->to switch to main
+
+git pull                        --->to pull the updated file in git hub
+
+
+npm i react-native-check-box react-native-custom-fonts react-native-dropdown-picker@5.3.0 react-native-gesture-handler@1.10.3 
+react-native-image-crop-picker@0.37.2 react-native-keyboard-avoiding-scroll-view react-native-media-controls 
+react-native-permissions@3.2.0 react-native-reanimated@2.2.2 react-native-responsive-fontsize@0.5.1 react-native-safe-area-context@3.2.0 
+react-native-screens@3.8.0 react-native-simple-radio-button react-native-switch react-native-video react-native-video-controls react-navigation@4.4.4 
+redux react-redux
+
+
+npm i @react-native-async-storage/async-storage@1.15.17 @react-native-community/checkbox @react-navigation/bottom-tabs@5.11.15 
+@react-navigation/drawer@5.12.9 @react-navigation/native@5.9.8 @react-navigation/stack@5.14.9 axios
+
+
+
