@@ -51,3 +51,12 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 
 //free css:-
 //"https://www.free-css.com/template-categories/ecommerce"
+
+//video call url
+//"https://www.videosdk.live/blog/how-to-make-a-video-calling-app-using-react-native"
+
+//npm react-native-incoming-
+//"https://github.com/bkdev98/react-native-incoming-call#readme"
+
+//Video calling tutorial-
+//"https://www.youtube.com/watch?v=rb70_TXRQNE"
