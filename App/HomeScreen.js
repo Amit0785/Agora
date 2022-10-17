@@ -8,9 +8,14 @@ import {
   ScrollView,
   RefreshControl,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import 'react-native-get-random-values';
 import {v4 as uuid} from 'uuid';
+import {
+  getUniqueId,
+  getManufacturer,
+  getDeviceId,
+} from 'react-native-device-info';
 //import CallScreen from './CallScreen';
 const {width, height} = Dimensions.get('window');
 
@@ -22,6 +27,12 @@ const HomeScreen = props => {
   // const [joinChannel, setJoinChannel] = useState(
   //   '0d3c129f-e8b4-4615-8410-6ca491dfa658',
   // );
+
+  useEffect(() => {
+    console.log('getUniqueId ===>', getUniqueId());
+    console.log('DeviceId ====>', getDeviceId());
+    console.log('getManufacturer==>', getManufacturer());
+  }, []);
 
   const [refreshing, setRefreshing] = React.useState(false);
 
