@@ -63,3 +63,5 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 
 //ios push notification
 //"https://www.desuvit.com/step-by-step-guide-for-implementing-push-notifications-in-ios-using-react-native/"
+
+// "openssl pkcs12 -in Certificates.p12 -out Certificates_pem.pem"
