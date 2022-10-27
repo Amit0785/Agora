@@ -60,3 +60,6 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 
 //Video calling tutorial-
 //"https://www.youtube.com/watch?v=rb70_TXRQNE"
+
+//ios push notification
+//"https://www.desuvit.com/step-by-step-guide-for-implementing-push-notifications-in-ios-using-react-native/"
