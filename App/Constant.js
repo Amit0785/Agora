@@ -12,3 +12,10 @@ export const device_token =
 //   end
 // end
 // end
+
+//Issue of Material Dropdown
+
+//In react-native-material-textfield/src/components/
+//1.affix/index:-line no 27
+//2.label/index:-line no 32
+//3.helper/index:-line no 13

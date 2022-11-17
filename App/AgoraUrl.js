@@ -66,3 +66,5 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 
 // to generate .pem file
 //"openssl pkcs12 -in Certificates.p12 -out Certificates_pem.pem"
+
+//material dropdown error resolve='https://stackoverflow.com/questions/61506034/error-when-i-try-import-dropdown-react-native'
