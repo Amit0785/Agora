@@ -70,3 +70,6 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 //material dropdown error resolve='https://stackoverflow.com/questions/61506034/error-when-i-try-import-dropdown-react-native'
 
 //dropdown_picker overlap issue='https://hossein-zare.github.io/react-native-dropdown-picker-website/docs/tutorials/multiple-pickers'
+
+//how to upload video/image in aws :-
+//'https://instamobile.io/react-native-tutorials/react-native-aws-s3/'
