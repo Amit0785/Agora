@@ -19,3 +19,6 @@ export const device_token =
 //1.affix/index:-line no 27
 //2.label/index:-line no 32
 //3.helper/index:-line no 13
+
+//npm version:-
+//npm install -g npm@3.10.10

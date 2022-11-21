@@ -73,3 +73,6 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 
 //how to upload video/image in aws :-
 //'https://instamobile.io/react-native-tutorials/react-native-aws-s3/'
+
+//Google app upload
+//'https://www.youtube.com/watch?v=Ormjb-BX1sw'
