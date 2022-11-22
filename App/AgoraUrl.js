@@ -1,6 +1,9 @@
 const agoraRecording =
   'https://www.agora.io/en/blog/cloud-recording-for-react-native-video-chat-using-agora/';
 
+const agoraS3Recording =
+  'https://www.agora.io/en/blog/react-native-streaming-agora-cloud-recording-videos-from-an-s3-bucket/';
+
 const agoraLive =
   'https://www.section.io/engineering-education/react-native-agora-livestreaming-app/';
 
