@@ -85,3 +85,10 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 //facebook hask key url:-'https://stackoverflow.com/questions/11896304/openssl-is-not-recognized-as-an-internal-or-external-command'
 
 //reanimated issue:-'https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/'
+
+const generateAbbFile = 'https://reactnative.dev/docs/signed-apk-android';
+
+const googleSignInYoutube = 'https://www.youtube.com/watch?v=3pYxbkhpOBY';
+
+const googleSignInDoc =
+  'https://github.com/react-native-google-signin/google-signin/blob/HEAD/docs/android-guide.md';
