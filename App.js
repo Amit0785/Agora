@@ -1,13 +1,29 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  Animated,
+  Dimensions,
+  SafeAreaView,
+  Pressable,
+} from 'react-native';
+import React, {useEffect, useState, useRef} from 'react';
 import firebase from '@react-native-firebase/app';
 import messaging from '@react-native-firebase/messaging';
 import {Provider} from 'react-redux';
 import store from './App/Redux/store';
-
+import CallingScreen from './App/CallingScreen';
 import StackNavigation from './App/StackNavigation';
+import CommonToast from './App/CommonToast/index';
+import {NotificationProvider} from './App/NotificationContext';
+//import NewToast from './App/NewToast/index';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
+const {width, height} = Dimensions.get('window');
 const App = () => {
+  const [isCalling, setCalling] = useState(false);
+  const [notificationData, setNotificationData] = useState([]);
   useEffect(() => {
     ConfigureFirebase();
   }, []);
@@ -63,6 +79,7 @@ const App = () => {
         .then(fcmToken => {
           if (fcmToken) {
             console.warn('have tok=====', fcmToken);
+            //CommonToast.showToast('Invalid credentials', 'error');
           } else {
             console.warn('have tok=====', 'Not registered');
           }
@@ -73,15 +90,116 @@ const App = () => {
     }
     //}
   };
+
+  //const windowHeight = Dimensions.get('window').height;
+
+  const popAnim = useRef(new Animated.Value(height * -0.5)).current;
+  const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
+  const popIn = () => {
+    Animated.timing(popAnim, {
+      toValue: height * 0.05,
+      //duration: 300,
+      useNativeDriver: true,
+    }).start(popOut());
+  };
+
+  const popOut = () => {
+    setTimeout(() => {
+      Animated.timing(popAnim, {
+        toValue: height * -1,
+        // duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }, 10000);
+  };
+
+  const instantPopOut = () => {
+    Animated.timing(popAnim, {
+      toValue: height * -1,
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <>
-      <Provider store={store}>
-        <StackNavigation />
-      </Provider>
+      <NotificationProvider
+        value={{
+          notificationData: notificationData,
+          setNotificationData: setNotificationData,
+          calling: isCalling,
+          setCalling: setCalling,
+          popIn: popIn,
+        }}>
+        <Provider store={store}>
+          {!isCalling ? (
+            <View>
+              <Animated.View
+                style={[
+                  styles.toastContainer,
+                  {
+                    transform: [{translateY: popAnim}],
+                  },
+                ]}>
+                <View style={styles.toastRow}>
+                  <View style={styles.toastText}>
+                    <Text style={{fontWeight: 'bold', fontSize: 15}}>
+                      status
+                    </Text>
+                    <Text style={{fontSize: 12}}>success data</Text>
+                  </View>
+                  <TouchableOpacity
+                    style={{width: 50, height: 40, backgroundColor: 'green'}}
+                    onPress={() => {
+                      // instantPopOut()
+                      console.log('Hello');
+                    }}>
+                    <Text style={{color: 'red'}}>close</Text>
+                  </TouchableOpacity>
+                </View>
+              </Animated.View>
+            </View>
+          ) : null}
+          {/* <CallingScreen /> */}
+
+          <StackNavigation />
+        </Provider>
+      </NotificationProvider>
     </>
   );
 };
 
 export default App;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  toastContainer: {
+    position: 'absolute',
+    height: 80,
+    width: 350,
+    alignSelf: 'center',
+    backgroundColor: '#f5f5f5',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    // paddingVertical: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    zIndex: -1,
+  },
+  toastRow: {
+    width: '90%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  toastText: {
+    width: '70%',
+    padding: 2,
+  },
+});

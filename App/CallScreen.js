@@ -116,15 +116,16 @@ export default function CallScreen(props) {
   };
 
   const answerCall = ({callUUID}) => {
-    const number = calls[callUUID];
-    log(`[answerCall] ${format(callUUID)}, number: ${number}`);
+    // const number = calls[callUUID];
+    // log(`[answerCall] ${format(callUUID)}, number: ${number}`);
 
-    RNCallKeep.startCall(callUUID, number, number);
+    // RNCallKeep.startCall(callUUID, number, number);
 
-    BackgroundTimer.setTimeout(() => {
-      log(`[setCurrentCallActive] ${format(callUUID)}, number: ${number}`);
-      RNCallKeep.setCurrentCallActive(callUUID);
-    }, 1000);
+    // BackgroundTimer.setTimeout(() => {
+    //   log(`[setCurrentCallActive] ${format(callUUID)}, number: ${number}`);
+    //   RNCallKeep.setCurrentCallActive(callUUID);
+    // }, 1000);
+    console.log('Hello');
   };
 
   const didPerformDTMFAction = ({callUUID, digits}) => {

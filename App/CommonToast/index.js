@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
-import {Text, Animated, SafeAreaView} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import {Text, Animated, SafeAreaView, Dimensions} from 'react-native';
 
 const styles = require('./style');
-
-var toast;
+const {width, height} = Dimensions.get('window');
+var toast = new Animated.Value(height * -0.5);
 
 class CommonToast extends Component {
   static setToast(thisref) {
-    toast = thisref;
+    //toast = thisref;
   }
 
   static hideToast() {
@@ -17,7 +16,7 @@ class CommonToast extends Component {
       toValue: -100,
       duration: 300,
       delay: 800,
-      useNativeDriver:true,
+      useNativeDriver: true,
     }).start();
   }
 
@@ -38,7 +37,7 @@ class CommonToast extends Component {
     ).start();
 
     //Hide the toast
-    this.timerOut = setTimeout(function() {
+    this.timerOut = setTimeout(function () {
       Animated.timing(toast.state.animationY, {
         toValue: -100,
         duration: 300,
@@ -70,26 +69,16 @@ class CommonToast extends Component {
           styles.container,
           {transform: [{translateY: this.state.animationY}]},
         ]}>
-        <LinearGradient
-          start={{x: 0, y: 0}}
-          end={{x: 0, y: 1}}
-          colors={
-            this.state.toastType == 'success'
-              ? ['#2fdc6f', '#358d10']
-              : ['#FF2E95', '#FF5858']
-          }
-          style={{flexDirection: 'row', padding: 12}}>
-          <Text style={styles.title}>{this.state.titleTxt}</Text>
-          <Text
-            style={styles.actionBtn}
-            onPress={() => {
-              if (this.callback) this.callback(true);
-              this.callback = null;
-              CommonToast.hideToast();
-            }}>
-            {this.state.toastType == 'success' ? '' : ''}
-          </Text>
-        </LinearGradient>
+        <Text style={styles.title}>{this.state.titleTxt}</Text>
+        <Text
+          style={styles.actionBtn}
+          onPress={() => {
+            if (this.callback) this.callback(true);
+            this.callback = null;
+            CommonToast.hideToast();
+          }}>
+          {this.state.toastType == 'success' ? '' : ''}
+        </Text>
       </Animated.View>
     );
   }

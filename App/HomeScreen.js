@@ -8,7 +8,7 @@ import {
   ScrollView,
   RefreshControl,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import 'react-native-get-random-values';
 import {v4 as uuid} from 'uuid';
 import {
@@ -18,6 +18,8 @@ import {
 } from 'react-native-device-info';
 //import CallScreen from './CallScreen';
 const {width, height} = Dimensions.get('window');
+
+import NotificationContext from './NotificationContext';
 
 const wait = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
@@ -35,6 +37,7 @@ const HomeScreen = props => {
   }, []);
 
   const [refreshing, setRefreshing] = React.useState(false);
+  const notificationContext = useContext(NotificationContext);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -179,6 +182,21 @@ const HomeScreen = props => {
 
           <TouchableOpacity
             onPress={() => {
+              notificationContext.popIn();
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: '#00FF7F',
+            }}>
+            <Text>Calling Toast</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
               joinLive();
             }}
             style={{
@@ -248,6 +266,20 @@ const HomeScreen = props => {
               backgroundColor: 'peru',
             }}>
             <Text>CallScreen</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('CallScreen2');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>CallScreen2</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

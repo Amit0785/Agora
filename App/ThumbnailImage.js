@@ -11,8 +11,8 @@ import {
 import {createThumbnail} from 'react-native-create-thumbnail';
 
 const placeholderImage = require('./Assets/Icon/placeholder-image.png');
-//const placeholderImage =
-('https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061132__340.png');
+// const placeholderImage =
+// ('https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061132__340.png');
 
 export default function App() {
   const data1 = [

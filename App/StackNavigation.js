@@ -23,7 +23,7 @@ import IceCreamComponent from './IceCreamComponent';
 import ReduxComponentHooks from './ReduxComponentHooks';
 import ItemContainer from './Redux/View/ItemContainer';
 import UserView from './UserView';
-
+import CallScreen2 from './CallScreen2';
 import TicTok from './TicTok';
 import ThumbnailImage from './ThumbnailImage';
 
@@ -44,6 +44,7 @@ const StackNavigation = () => {
         <Stack.Screen name="StreamMessage2" component={StreamMessage2} />
 
         <Stack.Screen name="CallScreen" component={CallScreen} />
+        <Stack.Screen name="CallScreen2" component={CallScreen2} />
         <Stack.Screen name="Recording" component={Recording} />
         <Stack.Screen name="LiveFunctional" component={LiveFunctional} />
         <Stack.Screen name="Reel" component={Reel} />
