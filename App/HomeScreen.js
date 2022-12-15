@@ -170,15 +170,20 @@ const HomeScreen = props => {
             <Text>Live</Text>
           </TouchableOpacity>
 
-          {/* <View style={styles.input}>
-          <TextInput
-            value={value}
-            onChangeText={value => setValue(value)}
-            placeholder="Enter Channel"
-            placeholderTextColor={'#8E7B85'}
-            autoCorrect={false}
-          />
-        </View> */}
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('ScreenRecording');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>Screen Recording</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => {

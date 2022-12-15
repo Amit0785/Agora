@@ -27,6 +27,8 @@ import CallScreen2 from './CallScreen2';
 import TicTok from './TicTok';
 import ThumbnailImage from './ThumbnailImage';
 
+import ScreenRecording from './ScreenRecording';
+
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
@@ -66,6 +68,8 @@ const StackNavigation = () => {
         <Stack.Screen name="UserView" component={UserView} />
         <Stack.Screen name="TicTok" component={TicTok} />
         <Stack.Screen name="ThumbnailImage" component={ThumbnailImage} />
+
+        <Stack.Screen name="ScreenRecording" component={ScreenRecording} />
       </Stack.Navigator>
     </NavigationContainer>
   );
