@@ -92,3 +92,7 @@ const googleSignInYoutube = 'https://www.youtube.com/watch?v=3pYxbkhpOBY';
 
 const googleSignInDoc =
   'https://github.com/react-native-google-signin/google-signin/blob/HEAD/docs/android-guide.md';
+
+//udid link='https://udid.tech/'
+
+//new app icon='https://makeappicon.com/'
