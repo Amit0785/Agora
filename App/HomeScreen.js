@@ -448,6 +448,21 @@ const HomeScreen = props => {
             }}>
             <Text>Thumbnail Image</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('CardPaymentEx');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>Payment Example</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

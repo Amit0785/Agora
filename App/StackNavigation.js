@@ -26,6 +26,7 @@ import UserView from './UserView';
 import CallScreen2 from './CallScreen2';
 import TicTok from './TicTok';
 import ThumbnailImage from './ThumbnailImage';
+import CardPaymentEx from './CardPaymentEx';
 
 import ScreenRecording from './ScreenRecording';
 
@@ -70,6 +71,8 @@ const StackNavigation = () => {
         <Stack.Screen name="ThumbnailImage" component={ThumbnailImage} />
 
         <Stack.Screen name="ScreenRecording" component={ScreenRecording} />
+
+        <Stack.Screen name="CardPaymentEx" component={CardPaymentEx} />
       </Stack.Navigator>
     </NavigationContainer>
   );
