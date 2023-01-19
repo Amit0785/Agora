@@ -463,6 +463,21 @@ const HomeScreen = props => {
             }}>
             <Text>Payment Example</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('Chats');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>Chat Example</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

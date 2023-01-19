@@ -29,6 +29,7 @@ import ThumbnailImage from './ThumbnailImage';
 import CardPaymentEx from './CardPaymentEx';
 
 import ScreenRecording from './ScreenRecording';
+import Chats from './Chat/Chats';
 
 const Stack = createStackNavigator();
 
@@ -73,6 +74,7 @@ const StackNavigation = () => {
         <Stack.Screen name="ScreenRecording" component={ScreenRecording} />
 
         <Stack.Screen name="CardPaymentEx" component={CardPaymentEx} />
+        <Stack.Screen name="Chats" component={Chats} />
       </Stack.Navigator>
     </NavigationContainer>
   );
