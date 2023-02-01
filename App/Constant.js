@@ -22,3 +22,10 @@ export const device_token =
 
 //npm version:-
 //npm install -g npm@3.10.10
+
+// Stack back button
+<Stack.Screen
+  options={{...options3, headerTransparent: true, headerBackTitle: 'Back'}}
+  name="EventDetails"
+  component={EventDetails}
+/>;
