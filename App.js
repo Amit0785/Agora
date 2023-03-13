@@ -7,6 +7,7 @@ import {
   Dimensions,
   SafeAreaView,
   Pressable,
+  Image,
 } from 'react-native';
 import React, {useEffect, useState, useRef} from 'react';
 import firebase from '@react-native-firebase/app';
@@ -110,7 +111,7 @@ const App = () => {
         // duration: 300,
         useNativeDriver: true,
       }).start();
-    }, 10000);
+    }, 2000);
   };
 
   const instantPopOut = () => {
@@ -142,20 +143,37 @@ const App = () => {
                   },
                 ]}>
                 <View style={styles.toastRow}>
+                  <View
+                    style={{
+                      height: 40,
+                      width: 40,
+                      //backgroundColor: 'red',
+                    }}>
+                    <Image
+                      source={require('./App/Assets/Icons/FitCheck.png')}
+                      style={{
+                        height: '100%',
+                        width: '100%',
+                        resizeMode: 'cover',
+                      }}
+                    />
+                  </View>
                   <View style={styles.toastText}>
                     <Text style={{fontWeight: 'bold', fontSize: 15}}>
-                      status
+                      Notification
                     </Text>
-                    <Text style={{fontSize: 12}}>success data</Text>
+                    <Text numberOfLines={1} style={{fontSize: 12}}>
+                      success data
+                    </Text>
                   </View>
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={{width: 50, height: 40, backgroundColor: 'green'}}
                     onPress={() => {
                       // instantPopOut()
                       console.log('Hello');
                     }}>
                     <Text style={{color: 'red'}}>close</Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                 </View>
               </Animated.View>
             </View>
@@ -175,7 +193,8 @@ const styles = StyleSheet.create({
   toastContainer: {
     position: 'absolute',
     height: 80,
-    width: 350,
+    width: width * 0.9,
+    //width: 350,
     alignSelf: 'center',
     backgroundColor: '#f5f5f5',
     justifyContent: 'center',
@@ -193,7 +212,7 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   toastRow: {
-    width: '90%',
+    width: '97%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -201,5 +220,6 @@ const styles = StyleSheet.create({
   toastText: {
     width: '70%',
     padding: 2,
+    //backgroundColor: 'pink',
   },
 });
