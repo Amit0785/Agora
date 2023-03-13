@@ -104,3 +104,7 @@ const googleSignInDoc =
 //How to generatee react native android bundle assets
 
 //npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+//https://www.desuvit.com/step-by-step-guide-for-implementing-push-notifications-in-ios-using-react-native/
+
+//https://rnfirebase.io/messaging/usage/ios-setup
