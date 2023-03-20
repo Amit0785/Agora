@@ -109,6 +109,20 @@ const HomeScreen = props => {
             // backgroundColor: 'blue',
           }}>
           <Text>Video Conference App</Text>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('LanguageChange');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+            }}>
+            <Text>Language Change</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => {

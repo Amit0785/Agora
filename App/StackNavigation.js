@@ -30,6 +30,7 @@ import CardPaymentEx from './CardPaymentEx';
 
 import ScreenRecording from './ScreenRecording';
 import Chats from './Chat/Chats';
+import LanguageChange from './LanguageChange/LanguageChange';
 
 const Stack = createStackNavigator();
 
@@ -52,6 +53,7 @@ const StackNavigation = () => {
         <Stack.Screen name="Recording" component={Recording} />
         <Stack.Screen name="LiveFunctional" component={LiveFunctional} />
         <Stack.Screen name="Reel" component={Reel} />
+        <Stack.Screen name="LanguageChange" component={LanguageChange} />
 
         <Stack.Screen name="NewVideoCall" component={NewVideoCall} />
 
