@@ -1,6 +1,30 @@
 {
   "translation": {
     "Change Language": "تغيير اللغة",
-    "Hello World": "مرحبا بالعالم"
+    "Hello World": "مرحبا بالعالم",
+    "Video Start": "بدء الفيديو",
+    "Video Join": "انضمام الفيديو",
+    "New Video Call": "مكالمة فيديو جديدة",
+    "Live": "يعيش",
+    "Calling Toast": "استدعاء توست",
+    "Screen Recording": "تسجيل الشاشة",
+    "Join Live": "انضم إلى Live",
+    "Join Live2": "انضم إلى Live2",
+    "StreamMessage": "StreamMessage",
+    "StreamMessage2": "StreamMessage2",
+    "CallScreen": "شاشة الاتصال",
+    "CallScreen2": "شاشة الاتصال2",
+    "Recording": "تسجيل",
+    "Reel Video": "بكرة فيديو",
+    "CountryCurrency": "عملة البلد",
+    "Checkbox Example": "مثال مربع الاختيار",
+    "Redux Cake Example": "مثال على كعكة الإحياء",
+    "Redux IceCream Example": "مثال إحياء IceCream",
+    "Redux Example with Hooks": "مثال الإحياء مع الخطافات",
+    "Api through redux": "Api من خلال الإعادة",
+    "TicTok app": "تطبيق TikTok",
+    "Thumbnail Image": "صورة مصغرة",
+    "Payment Example": "مثال الدفع",
+    "Chat Example": "مثال الدردشة"
   }
 }

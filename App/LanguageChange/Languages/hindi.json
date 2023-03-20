@@ -1,6 +1,30 @@
 {
   "translation": {
     "Change Language": "भाषा बदलें",
-    "Hello World": "हैलो वर्ल्ड"
+    "Hello World": "हैलो वर्ल्ड",
+    "Video Start": "वीडियो प्रारंभ",
+    "Video Join": "वीडियो ज्वाइन करें",
+    "New Video Call": "नया वीडियो कॉल",
+    "Live": "रहना",
+    "Calling Toast": "कॉलिंग टोस्ट",
+    "Screen Recording": "स्क्रीन रिकॉर्डिंग",
+    "Join Live": "लाइव जुड़ें",
+    "Join Live2": "Live2 से जुड़ें",
+    "StreamMessage": "स्ट्रीममैसेज",
+    "StreamMessage2": "स्ट्रीममैसेज2",
+    "CallScreen": "कॉलस्क्रीन",
+    "CallScreen2": "कॉलस्क्रीन2",
+    "Recording": "रिकॉर्डिंग",
+    "Reel Video": "रील वीडियो",
+    "CountryCurrency": "देश की मुद्रा",
+    "Checkbox Example": "चेकबॉक्स उदाहरण",
+    "Redux Cake Example": "Redux केक उदाहरण",
+    "Redux IceCream Example": "Redux IceCream उदाहरण",
+    "Redux Example with Hooks": "हुक के साथ Redux उदाहरण",
+    "Api through redux": "Redux के माध्यम से एपीआई",
+    "TicTok app": "टिकटॉक ऐप",
+    "Thumbnail Image": "थंबनेल छवि",
+    "Payment Example": "भुगतान उदाहरण",
+    "Chat Example": "चैट उदाहरण"
   }
 }

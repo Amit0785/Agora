@@ -20,14 +20,26 @@ import CommonToast from './App/CommonToast/index';
 import {NotificationProvider} from './App/NotificationContext';
 //import NewToast from './App/NewToast/index';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useTranslation} from 'react-i18next';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const {width, height} = Dimensions.get('window');
 const App = () => {
   const [isCalling, setCalling] = useState(false);
   const [notificationData, setNotificationData] = useState([]);
+  const {i18n} = useTranslation();
   useEffect(() => {
     ConfigureFirebase();
+    checkLanguage();
   }, []);
+
+  const checkLanguage = async () => {
+    const lng = await AsyncStorage.getItem('appLanguage');
+    if (lng !== null) {
+      i18n.changeLanguage(lng);
+    }
+  };
   const ConfigureFirebase = async () => {
     // console.log(firebase.apps.length, 'firebase')
 

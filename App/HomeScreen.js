@@ -16,6 +16,8 @@ import {
   getManufacturer,
   getDeviceId,
 } from 'react-native-device-info';
+
+import {useTranslation} from 'react-i18next';
 //import CallScreen from './CallScreen';
 const {width, height} = Dimensions.get('window');
 
@@ -29,6 +31,8 @@ const HomeScreen = props => {
   // const [joinChannel, setJoinChannel] = useState(
   //   '0d3c129f-e8b4-4615-8410-6ca491dfa658',
   // );
+
+  const {t, i18n} = useTranslation();
 
   useEffect(() => {
     console.log('getUniqueId ===>', getUniqueId());
@@ -121,7 +125,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Language Change</Text>
+            <Text>{t('Change Language')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -136,7 +140,7 @@ const HomeScreen = props => {
               marginVertical: 20,
               backgroundColor: 'pink',
             }}>
-            <Text>Video Start</Text>
+            <Text>{t('Video Start')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -151,7 +155,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Video Join</Text>
+            <Text>{t('Video Join')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -166,7 +170,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text> New Video Call</Text>
+            <Text> {t('New Video Call')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -181,7 +185,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Live</Text>
+            <Text>{t('Live')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -196,7 +200,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Screen Recording</Text>
+            <Text>{t('Screen Recording')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -211,7 +215,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: '#00FF7F',
             }}>
-            <Text>Calling Toast</Text>
+            <Text>{t('Calling Toast')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -226,7 +230,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text> Join Live</Text>
+            <Text> {t('Join Live')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -240,7 +244,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text> Join Live2</Text>
+            <Text> {t('Join Live2')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -255,7 +259,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>StreamMessage</Text>
+            <Text>{t('StreamMessage')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -270,7 +274,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>StreamMessage2</Text>
+            <Text>{t('StreamMessage2')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -284,7 +288,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>CallScreen</Text>
+            <Text>{t('CallScreen')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -298,7 +302,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>CallScreen2</Text>
+            <Text>{t('CallScreen2')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -313,7 +317,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Recording</Text>
+            <Text>{t('Recording')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -327,7 +331,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Reel Video</Text>
+            <Text>{t('Reel Video')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -342,7 +346,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>CountryCurrency</Text>
+            <Text>{t('CountryCurrency')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -370,7 +374,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Checkbox Example</Text>
+            <Text>{t('Checkbox Example')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -385,7 +389,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: '#00FF7F',
             }}>
-            <Text>Redux Cake Example</Text>
+            <Text>{t('Redux Cake Example')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -400,7 +404,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: '#00FF7F',
             }}>
-            <Text>Redux IceCream Example</Text>
+            <Text>{t('Redux IceCream Example')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -415,7 +419,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: '#B6D0E2',
             }}>
-            <Text>Redux Example with Hooks</Text>
+            <Text>{t('Redux Example with Hooks')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -430,7 +434,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: '#B6D0E2',
             }}>
-            <Text>Api through redux</Text>
+            <Text>{t('Api through redux')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -445,7 +449,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>TIcTok app</Text>
+            <Text>{t('TicTok app')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -460,7 +464,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Thumbnail Image</Text>
+            <Text>{t('Thumbnail Image')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -475,7 +479,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Payment Example</Text>
+            <Text>{t('Payment Example')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -490,7 +494,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>Chat Example</Text>
+            <Text>{t('Chat Example')}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

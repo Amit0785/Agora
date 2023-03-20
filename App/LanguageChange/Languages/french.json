@@ -1,6 +1,30 @@
 {
   "translation": {
     "Change Language": "Changer de langue",
-    "Hello World": "Bonjour le monde"
+    "Hello World": "Bonjour le monde",
+    "Video Start": "Début de la vidéo",
+    "Video Join": "Rejoindre la vidéo",
+    "New Video Call": "Nouvel appel vidéo",
+    "Live": "En direct",
+    "Calling Toast": "Toast d'appel",
+    "Screen Recording": "Enregistrement d'écran",
+    "Join Live": "Rejoindre en direct",
+    "Join Live2": "Rejoindre Live2",
+    "StreamMessage": "FluxMessage",
+    "StreamMessage2": "FluxMessage2",
+    "CallScreen": "Écran d'appel",
+    "CallScreen2": "AppelÉcran2",
+    "Recording": "Enregistrement",
+    "Reel Video": "Vidéo de bobine",
+    "CountryCurrency": "Devise du pays",
+    "Checkbox Example": "Exemple de case à cocher",
+    "Redux Cake Example": "Exemple de gâteau Redux",
+    "Redux IceCream Example": "Exemple de crème glacée Redux",
+    "Redux Example with Hooks": "Exemple Redux avec crochets",
+    "Api through redux": "API via redux",
+    "TicTok app": "Application TikTok",
+    "Thumbnail Image": "Vignette",
+    "Payment Example": "Exemple de paiement",
+    "Chat Example": "Exemple de chat"
   }
 }
