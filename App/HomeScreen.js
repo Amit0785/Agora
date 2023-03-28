@@ -125,7 +125,7 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'peru',
             }}>
-            <Text>{t('Change Language')}</Text>
+            <Text>Change Language</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

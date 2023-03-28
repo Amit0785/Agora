@@ -108,3 +108,5 @@ const googleSignInDoc =
 //https://www.desuvit.com/step-by-step-guide-for-implementing-push-notifications-in-ios-using-react-native/
 
 //https://rnfirebase.io/messaging/usage/ios-setup
+
+//Object.values(error.response.data)[0][0]
