@@ -110,3 +110,5 @@ const googleSignInDoc =
 //https://rnfirebase.io/messaging/usage/ios-setup
 
 //Object.values(error.response.data)[0][0]
+
+//assetsbundle:-npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
