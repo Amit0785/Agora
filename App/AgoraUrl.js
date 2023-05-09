@@ -80,7 +80,7 @@ const fakeApi1 = 'https://jsonplaceholder.typicode.com/';
 //Google app upload
 //'https://www.youtube.com/watch?v=Ormjb-BX1sw'
 
-//facebook hash key:-keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | "C:\Users\BIT-11009\openssl-0.9.8k_X64\bin\openssl.exe" sha1 -binary | "C:\Users\BIT-11009\openssl-0.9.8k_X64\bin\openssl.exe" base64
+//facebook hash key:- keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | "C:\Users\BIT-11009\openssl-0.9.8k_X64\bin\openssl.exe" sha1 -binary | "C:\Users\BIT-11009\openssl-0.9.8k_X64\bin\openssl.exe" base64
 
 //facebook hask key url:-'https://stackoverflow.com/questions/11896304/openssl-is-not-recognized-as-an-internal-or-external-command'
 
