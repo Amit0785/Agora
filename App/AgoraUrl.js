@@ -112,3 +112,11 @@ const googleSignInDoc =
 //Object.values(error.response.data)[0][0]
 
 //assetsbundle:-npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+//app store image:-https://appradar.com/blog/ios-app-screenshot-sizes-and-guidelines-for-the-apple-app-store
+
+//google play store image:-https://www.sommo.io/blog/google-play-store-screenshot-sizes-and-guidelines-2023#:~:text=Google%20Play%20Screenshot%20Size%20%26%20Format&text=Screenshots%20can%20be%20either%20in,or%20portrait%20screenshots%20for%20games.
+
+//Google Play Screenshot Size & Format
+//Submit at least 4 screenshots of apps, each sized in at least 1080 px. Screenshots can be either in resolutions from 920 x 1080px or 1080 x 1920px for landscape and portrait, respectively.
+//Submit a minimum of 3 landscape or portrait screenshots for games. Each screenshot must project the in-game experience.
