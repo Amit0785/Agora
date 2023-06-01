@@ -157,6 +157,20 @@ const HomeScreen = props => {
             }}>
             <Text>{t('Video Join')}</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('StickeyHeader');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'pink',
+            }}>
+            <Text>Stickey Header</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => {

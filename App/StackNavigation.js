@@ -32,6 +32,8 @@ import ScreenRecording from './ScreenRecording';
 import Chats from './Chat/Chats';
 import LanguageChange from './LanguageChange/LanguageChange';
 
+import StickeyHeader from './StickeyHeader/StickeyHeader';
+
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
@@ -47,7 +49,7 @@ const StackNavigation = () => {
         <Stack.Screen name="Live2" component={Live2} />
         <Stack.Screen name="StreamMessage" component={StreamMessage} />
         <Stack.Screen name="StreamMessage2" component={StreamMessage2} />
-
+        <Stack.Screen name="StickeyHeader" component={StickeyHeader} />
         <Stack.Screen name="CallScreen" component={CallScreen} />
         <Stack.Screen name="CallScreen2" component={CallScreen2} />
         <Stack.Screen name="Recording" component={Recording} />

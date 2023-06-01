@@ -120,3 +120,5 @@ const googleSignInDoc =
 //Google Play Screenshot Size & Format
 //Submit at least 4 screenshots of apps, each sized in at least 1080 px. Screenshots can be either in resolutions from 920 x 1080px or 1080 x 1920px for landscape and portrait, respectively.
 //Submit a minimum of 3 landscape or portrait screenshots for games. Each screenshot must project the in-game experience.
+
+//Apple screenshot:-https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications
