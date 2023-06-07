@@ -32,7 +32,10 @@ import ScreenRecording from './ScreenRecording';
 import Chats from './Chat/Chats';
 import LanguageChange from './LanguageChange/LanguageChange';
 
-import StickeyHeader from './StickeyHeader/StickeyHeader';
+//import StickeyHeader from './StickeyHeader/StickeyHeader';
+
+import DragableComp from './DragableComp/DragableComp';
+import NewPost from './DragableComp/NewPost';
 
 const Stack = createStackNavigator();
 
@@ -49,14 +52,15 @@ const StackNavigation = () => {
         <Stack.Screen name="Live2" component={Live2} />
         <Stack.Screen name="StreamMessage" component={StreamMessage} />
         <Stack.Screen name="StreamMessage2" component={StreamMessage2} />
-        <Stack.Screen name="StickeyHeader" component={StickeyHeader} />
+        {/* <Stack.Screen name="StickeyHeader" component={StickeyHeader} /> */}
         <Stack.Screen name="CallScreen" component={CallScreen} />
         <Stack.Screen name="CallScreen2" component={CallScreen2} />
         <Stack.Screen name="Recording" component={Recording} />
         <Stack.Screen name="LiveFunctional" component={LiveFunctional} />
         <Stack.Screen name="Reel" component={Reel} />
         <Stack.Screen name="LanguageChange" component={LanguageChange} />
-
+        <Stack.Screen name="DragableComp" component={DragableComp} />
+        <Stack.Screen name="NewPost" component={NewPost} />
         <Stack.Screen name="NewVideoCall" component={NewVideoCall} />
 
         <Stack.Screen name="CountryCurrency" component={CountryCurrency} />

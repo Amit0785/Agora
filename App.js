@@ -1,3 +1,4 @@
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {
   StyleSheet,
   Text,
@@ -135,7 +136,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <GestureHandlerRootView style={{flex: 1}}>
       <NotificationProvider
         value={{
           notificationData: notificationData,
@@ -195,7 +196,7 @@ const App = () => {
           <StackNavigation />
         </Provider>
       </NotificationProvider>
-    </>
+    </GestureHandlerRootView>
   );
 };
 

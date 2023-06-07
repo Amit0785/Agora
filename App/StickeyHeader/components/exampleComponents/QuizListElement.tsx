@@ -1,9 +1,9 @@
 import * as React from 'react';
-import type { ImageSourcePropType } from 'react-native';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import type {ImageSourcePropType} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-import { cards } from '../../assets/icons';
-import { colors, constants, screenStyles } from '../../constants';
+import {cards} from '../../assets/icons';
+import {colors, constants, screenStyles} from '../../constants';
 
 type Props = {
   onPress?: () => void;
@@ -24,14 +24,23 @@ const QuizListElement: React.FC<Props> = ({
   elements,
   pressUser,
 }) => (
-  <TouchableOpacity onPress={onPress} style={styles.container} activeOpacity={0.95}>
+  <TouchableOpacity
+    onPress={onPress}
+    style={styles.container}
+    activeOpacity={0.95}>
     <View style={styles.labelContainer}>
       <View style={styles.labelTextContainer}>
         <Text style={[screenStyles.text, styles.labelText]}>{labelText}</Text>
       </View>
-      <View style={[styles.iconContainer, elements >= 20 && { backgroundColor: colors.coralPink }]}>
+      <View
+        style={[
+          styles.iconContainer,
+          elements >= 20 && {backgroundColor: colors.coralPink},
+        ]}>
         <Image source={cards} style={styles.icon} />
-        <Text style={[styles.number, elements < 10 && styles.iconCardElement]}>{elements}</Text>
+        <Text style={[styles.number, elements < 10 && styles.iconCardElement]}>
+          {elements}
+        </Text>
       </View>
     </View>
     <View>
@@ -41,9 +50,15 @@ const QuizListElement: React.FC<Props> = ({
       <TouchableOpacity style={styles.authorContainer} onPress={pressUser}>
         <View style={styles.footerContainer}>
           {imageSource && (
-            <Image source={imageSource} style={styles.authorPhoto} resizeMode="contain" />
+            <Image
+              source={imageSource}
+              style={styles.authorPhoto}
+              resizeMode="contain"
+            />
           )}
-          <Text style={[screenStyles.text, styles.authorName]}>{authorName}</Text>
+          <Text style={[screenStyles.text, styles.authorName]}>
+            {authorName}
+          </Text>
         </View>
       </TouchableOpacity>
       <View style={styles.authorBlankContainer} />

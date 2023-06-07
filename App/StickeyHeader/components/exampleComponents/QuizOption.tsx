@@ -1,10 +1,17 @@
 import * as React from 'react';
-import type { LayoutChangeEvent } from 'react-native';
-import { Image, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+import type {LayoutChangeEvent} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 
-import type { Card } from '../../assets/data/cards';
-import { Check, Close } from '../../assets/icons';
-import { colors, screenStyles } from '../../constants';
+import type {Card} from '../../assets/data/cards';
+import {Check, Close} from '../../icons';
+import {colors, screenStyles} from '../../constants';
 
 type Props = {
   card: Card;
@@ -14,12 +21,16 @@ type Props = {
 
 const QUIZ_OPTION_WIDTH_PERCENTAGE = 0.75;
 
-const QuizOption: React.FC<Props> = ({ reveal, revealed, card: { number, question, value } }) => {
-  const { width: windowWidth } = useWindowDimensions();
+const QuizOption: React.FC<Props> = ({
+  reveal,
+  revealed,
+  card: {number, question, value},
+}) => {
+  const {width: windowWidth} = useWindowDimensions();
   const [picked, setPicked] = React.useState(false);
   const [paddingVertical, setPaddingVertical] = React.useState(0);
   const calcPaddings = React.useCallback((event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout;
+    const {height} = event.nativeEvent.layout;
     const circleRadius = 40;
     const padding = height > circleRadius ? height / 2.5 : 0;
 
@@ -42,13 +53,15 @@ const QuizOption: React.FC<Props> = ({ reveal, revealed, card: { number, questio
       <View
         style={[
           styles.container,
-          { backgroundColor, width: windowWidth * QUIZ_OPTION_WIDTH_PERCENTAGE },
+          {backgroundColor, width: windowWidth * QUIZ_OPTION_WIDTH_PERCENTAGE},
         ]}>
-        <View style={[styles.letterContainer, { paddingVertical }]}>
+        <View style={[styles.letterContainer, {paddingVertical}]}>
           <Image source={value ? Check : Close} />
         </View>
         <View onLayout={calcPaddings} style={styles.textContainer}>
-          <Text style={[screenStyles.text, styles.text, { color }]}>{question}</Text>
+          <Text style={[screenStyles.text, styles.text, {color}]}>
+            {question}
+          </Text>
         </View>
       </View>
     );
@@ -57,8 +70,11 @@ const QuizOption: React.FC<Props> = ({ reveal, revealed, card: { number, questio
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.container, { width: windowWidth * QUIZ_OPTION_WIDTH_PERCENTAGE }]}>
-      <View style={[styles.letterContainer, { paddingVertical }]}>
+      style={[
+        styles.container,
+        {width: windowWidth * QUIZ_OPTION_WIDTH_PERCENTAGE},
+      ]}>
+      <View style={[styles.letterContainer, {paddingVertical}]}>
         <Text style={[screenStyles.text, styles.letter]}>{number}</Text>
       </View>
       <View onLayout={calcPaddings} style={styles.textContainer}>

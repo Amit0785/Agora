@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
   RefreshControl,
+  Image,
 } from 'react-native';
 import React, {useState, useEffect, useContext} from 'react';
 import 'react-native-get-random-values';
@@ -16,6 +17,16 @@ import {
   getManufacturer,
   getDeviceId,
 } from 'react-native-device-info';
+
+import {
+  Menu,
+  MenuProvider,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
+
+import OptionsMenu from 'react-native-options-menu';
 
 import {useTranslation} from 'react-i18next';
 //import CallScreen from './CallScreen';
@@ -87,6 +98,21 @@ const HomeScreen = props => {
   const ReelVideo = () => {
     props.navigation.navigate('Reel');
   };
+
+  const options = ['Option 1', 'Option 2', 'Option 3'];
+
+  const renderOptions = () => {
+    return options.map((option, index) => (
+      <TouchableOpacity
+        key={index}
+        style={styles.option}
+        onPress={() => {
+          console.log(option);
+        }}>
+        <Text style={styles.optionText}>{option}</Text>
+      </TouchableOpacity>
+    ));
+  };
   return (
     <SafeAreaView style={{flex: 1, alignItems: 'center'}}>
       <ScrollView
@@ -143,6 +169,66 @@ const HomeScreen = props => {
             <Text>{t('Video Start')}</Text>
           </TouchableOpacity>
 
+          <View
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+              flexDirection: 'row',
+            }}>
+            <OptionsMenu
+              customButton={<Text style={styles.menuButton}>Options</Text>}
+              optionsContainerStyle={styles.optionsContainer}
+              options={options}
+              // actions={[
+              //   () => {
+              //     console.log('item');
+              //   },
+              // ]}
+              renderOptions={renderOptions}
+            />
+          </View>
+
+          <View
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginVertical: 10,
+              backgroundColor: 'peru',
+              flexDirection: 'row',
+            }}>
+            <Text>popup menu</Text>
+            <MenuProvider
+              style={{
+                //backgroundColor: 'red',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Menu style={{backgroundColor: 'red'}}>
+                <MenuTrigger
+                  customStyles={{
+                    triggerWrapper: {
+                      //top: -20,
+                    },
+                  }}>
+                  <Image
+                    source={require('./Assets/Icons/more.png')}
+                    style={{height: 20, width: 15}}
+                  />
+                </MenuTrigger>
+                <MenuOptions>
+                  <MenuOption onSelect={() => alert(`Save`)} text="Save" />
+                  <MenuOption onSelect={() => alert(`Delete`)} text="Delete" />
+                </MenuOptions>
+              </Menu>
+            </MenuProvider>
+          </View>
+
           <TouchableOpacity
             onPress={() => {
               joinConference();
@@ -159,7 +245,7 @@ const HomeScreen = props => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('StickeyHeader');
+              props.navigation.navigate('DragableComp');
             }}
             style={{
               width: 150,
@@ -169,7 +255,21 @@ const HomeScreen = props => {
               marginVertical: 10,
               backgroundColor: 'pink',
             }}>
-            <Text>Stickey Header</Text>
+            <Text>Dragable Comp</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('NewPost');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'pink',
+            }}>
+            <Text>New Post</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -527,5 +627,28 @@ const styles = StyleSheet.create({
 
     //marginTop: height * 0.0,
     paddingLeft: 10,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuButton: {
+    fontSize: 18,
+    color: 'white',
+    fontWeight: 'bold',
+    padding: 10,
+  },
+  optionsContainer: {
+    backgroundColor: 'white',
+    borderRadius: 4,
+    padding: 10,
+  },
+  option: {
+    padding: 10,
+  },
+  optionText: {
+    fontSize: 16,
+    color: '#fff', // Customize the color here
   },
 });
