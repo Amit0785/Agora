@@ -271,6 +271,20 @@ const HomeScreen = props => {
             }}>
             <Text>New Post</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('SwipeDelete');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'pink',
+            }}>
+            <Text>Swipe Delete</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => {

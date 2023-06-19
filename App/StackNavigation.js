@@ -33,6 +33,7 @@ import Chats from './Chat/Chats';
 import LanguageChange from './LanguageChange/LanguageChange';
 
 //import StickeyHeader from './StickeyHeader/StickeyHeader';
+import SwipeDelete from './SwipeDelete/SwipeDelete';
 
 import DragableComp from './DragableComp/DragableComp';
 import NewPost from './DragableComp/NewPost';
@@ -83,6 +84,8 @@ const StackNavigation = () => {
 
         <Stack.Screen name="CardPaymentEx" component={CardPaymentEx} />
         <Stack.Screen name="Chats" component={Chats} />
+
+        <Stack.Screen name="SwipeDelete" component={SwipeDelete} />
       </Stack.Navigator>
     </NavigationContainer>
   );
