@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   Pressable,
   Image,
+  useColorScheme,
 } from 'react-native';
 import React, {useEffect, useState, useRef} from 'react';
 import firebase from '@react-native-firebase/app';
@@ -24,6 +25,8 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {NavigationContainer} from '@react-navigation/native';
+import {lightColors, darkColors} from './App/Colors';
 
 const {width, height} = Dimensions.get('window');
 const App = () => {
@@ -34,6 +37,11 @@ const App = () => {
     ConfigureFirebase();
     checkLanguage();
   }, []);
+
+  const theme = useColorScheme();
+
+  const appTheme = theme == 'dark' ? darkColors : lightColors;
+  console.log('==============>', appTheme);
 
   const checkLanguage = async () => {
     const lng = await AsyncStorage.getItem('appLanguage');
@@ -193,7 +201,9 @@ const App = () => {
           ) : null}
           {/* <CallingScreen /> */}
 
-          <StackNavigation />
+          <NavigationContainer>
+            <StackNavigation />
+          </NavigationContainer>
         </Provider>
       </NotificationProvider>
     </GestureHandlerRootView>

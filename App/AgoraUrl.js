@@ -122,3 +122,7 @@ const googleSignInDoc =
 //Submit a minimum of 3 landscape or portrait screenshots for games. Each screenshot must project the in-game experience.
 
 //Apple screenshot:-https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications
+
+//firebase deeplinking:-https://mrdevgeek.com/how-to-implement-deep-linking-in-react-native-with-firebase-dynamic-links/
+
+//ios version in xcode:-https://github.com/filsv/iOSDeviceSupport

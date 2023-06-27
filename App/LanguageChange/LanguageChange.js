@@ -26,10 +26,10 @@ const LanguageChange = props => {
     },
   ];
 
-  console.log('===I18nManager===>', I18nManager.isRTL);
-  console.log('==i18n.language====>', i18n);
+  // console.log('===I18nManager===>', I18nManager.isRTL);
+  //console.log('==i18n.language====>', i18n);
 
-  // console.log('======>', RNLocalize.getLocales());
+  console.log('======>', RNLocalize.getLocales()[0]);
 
   const initialLanguage = () => {
     if (i18n.language == 'en') {

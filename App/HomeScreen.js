@@ -285,6 +285,20 @@ const HomeScreen = props => {
             }}>
             <Text>Swipe Delete</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('LongPressSelect');
+            }}
+            style={{
+              width: 150,
+              height: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginVertical: 10,
+              backgroundColor: 'pink',
+            }}>
+            <Text>LongPressSelect</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => {
