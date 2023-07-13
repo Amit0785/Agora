@@ -76,8 +76,6 @@ const LongPressSelect = () => {
       setPostData(tempArr);
       setSelectedData([...selectedData, data]);
     }
-
-    //setSelect(true);
   };
 
   const cancelFunc = () => {
@@ -124,7 +122,7 @@ const LongPressSelect = () => {
                 cancelFunc();
               }}
               style={styles.descriptionText}>
-              Move
+              Cancel
             </Text>
             <Text onPress={() => deleteFunc()} style={styles.descriptionText}>
               Delete
@@ -138,8 +136,6 @@ const LongPressSelect = () => {
           height: height * 0.785,
           marginTop: height * 0.01,
           alignSelf: 'center',
-          // alignItems: 'center',
-          // backgroundColor: 'red',
         }}>
         <FlatList
           data={postData}
