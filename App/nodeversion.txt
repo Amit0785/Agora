@@ -1,3 +1,6 @@
 how to change node version
 1.sudo npm install -g n
 2.sudo n 16.13.0
+
+for changing npm version
+npm install -g npm@<version>

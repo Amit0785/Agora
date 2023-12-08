@@ -132,3 +132,16 @@ const googleSignInDoc =
 //firebase deeplinking:-https://mrdevgeek.com/how-to-implement-deep-linking-in-react-native-with-firebase-dynamic-links/
 
 //ios version in xcode:-https://github.com/filsv/iOSDeviceSupport
+
+// react-native version change :- https://react-native-community.github.io/upgrade-helper/
+
+<CheckBox
+  value={isSelected}
+  boxType="square"
+  onValueChange={setSelection}
+  style={{alignSelf: 'center', transform: [{scaleX: 0.8}, {scaleY: 0.8}]}}
+  onTintColor={'#032F2F'} // for IOS
+  tintColors={{true: '#032F2F'}} //for Android
+  onCheckColor={'#fff'}
+  onFillColor={'#032F2F'}
+/>;
