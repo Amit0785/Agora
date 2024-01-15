@@ -145,3 +145,8 @@ const googleSignInDoc =
   onCheckColor={'#fff'}
   onFillColor={'#032F2F'}
 />;
+
+//image resize :-- https://www.iloveimg.com/resize-image
+
+//splashScreen link 1 :-- https://www.youtube.com/watch?v=cdNBd63H54g
+//splashScreen link 2 :-- https://medium.com/handlebar-labs/how-to-add-a-splash-screen-to-a-react-native-app-ios-and-android-30a3cec835ae
