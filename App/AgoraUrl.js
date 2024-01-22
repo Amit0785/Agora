@@ -150,3 +150,4 @@ const googleSignInDoc =
 
 //splashScreen link 1 :-- https://www.youtube.com/watch?v=cdNBd63H54g
 //splashScreen link 2 :-- https://medium.com/handlebar-labs/how-to-add-a-splash-screen-to-a-react-native-app-ios-and-android-30a3cec835ae
+//cashfree:-- https://github.com/cashfree/react-native-cashfree-pg-sdk?tab=readme-ov-file
