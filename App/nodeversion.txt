@@ -4,3 +4,10 @@ how to change node version
 
 for changing npm version
 npm install -g npm@<version>
+
+Yarn--
+
+
+
+Powershell restriction remove:--- Set-ExecutionPolicy Unrestricted
+                                   A

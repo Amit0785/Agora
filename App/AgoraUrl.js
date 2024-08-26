@@ -146,8 +146,30 @@ const googleSignInDoc =
   onFillColor={'#032F2F'}
 />;
 
+<CheckBox
+  value={checked}
+  boxType="square"
+  onValueChange={() => setChecked(!checked)}
+  style={{
+    alignSelf: 'center',
+    transform: [
+      {scaleX: Platform.OS == 'ios' ? 0.8 : 1},
+      {scaleY: Platform.OS == 'ios' ? 0.8 : 1},
+    ],
+  }}
+  onTintColor={COLORS.appColor} // for IOS
+  tintColors={{true: COLORS.appColor, false: COLORS.lightYellow}} //for Android
+  onFillColor={COLORS.appColor} // for IOS
+  tintColor={COLORS.black} // for IOS
+  onCheckColor={COLORS.black} // for IOS
+/>;
 //image resize :-- https://www.iloveimg.com/resize-image
 
 //splashScreen link 1 :-- https://www.youtube.com/watch?v=cdNBd63H54g
 //splashScreen link 2 :-- https://medium.com/handlebar-labs/how-to-add-a-splash-screen-to-a-react-native-app-ios-and-android-30a3cec835ae
 //cashfree:-- https://github.com/cashfree/react-native-cashfree-pg-sdk?tab=readme-ov-file
+
+//whatsapp:== https://medium.com/@vishamberlal/opening-whatsapp-in-react-native-for-ios-and-android-3504aae4ca26
+//pix payment gateway:- https://www.mercadopago.com.br/developers/en/docs/checkout-api/integration-configuration/integrate-with-pix#editor_4
+
+//npx unimported
